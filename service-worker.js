@@ -1,48 +1,12 @@
-const CACHE = 'questline-v3-beta2-phone-v1';
-const SHELL = [
-  './',
-  './index.html',
-  './manifest.webmanifest',
-  './icon-192.png',
-  './icon-512.png',
-  './version.json'
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)));
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
-
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE).then(cache => cache.put('./index.html', copy));
-          return response;
-        })
-        .catch(() => caches.match('./index.html'))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE).then(cache => cache.put(event.request, copy));
-      return response;
-    }))
-  );
+const CACHE='questline-v3-3-cache-v1';
+const CORE=['./','./index.html','./app.css','./app.js','./manifest.webmanifest','./version.json','./icon-192.png','./icon-512.png','./vendor/jszip.min.js','./vendor/questline-xlsx.js','./assets/asset-manifest.json','./assets/avatar.webp','./assets/badge_balanced.webp','./assets/badge_boundary.webp','./assets/badge_campfire.webp','./assets/badge_clear.webp','./assets/badge_deadline.webp','./assets/badge_first.webp','./assets/badge_habit.webp','./assets/badge_loop.webp','./assets/badge_momentum.webp','./assets/badge_pathfinder.webp','./assets/badge_questmaster.webp','./assets/badge_recovery.webp','./assets/badge_renewal.webp','./assets/badge_strategic.webp','./assets/brand.webp','./assets/character_capture.webp','./assets/character_celebrate.webp','./assets/character_checkpoint.webp','./assets/character_focus.webp','./assets/character_idle.webp','./assets/character_plan.webp','./assets/character_recover.webp','./assets/character_reflect.webp','./assets/character_renew.webp','./assets/character_reschedule.webp','./assets/character_risk.webp','./assets/character_think.webp','./assets/character_walk.webp','./assets/clock_completed_early.webp','./assets/clock_completed_late.webp','./assets/clock_current.webp','./assets/clock_due.webp','./assets/clock_due_soon.webp','./assets/clock_inactive.webp','./assets/clock_original.webp','./assets/clock_overdue.webp','./assets/clock_recovered.webp','./assets/clock_repeated.webp','./assets/decision_archived.webp','./assets/decision_converted.webp','./assets/decision_criteria.webp','./assets/decision_incubated.webp','./assets/decision_reached.webp','./assets/discovery_consult.webp','./assets/discovery_evidence.webp','./assets/discovery_experiment.webp','./assets/discovery_new.webp','./assets/discovery_option.webp','./assets/discovery_question.webp','./assets/discovery_research.webp','./assets/discovery_step.webp','./assets/goal_blocked.webp','./assets/goal_completed.webp','./assets/goal_goal.webp','./assets/goal_major.webp','./assets/goal_milestone.webp','./assets/goal_next.webp','./assets/goal_paused.webp','./assets/goal_progress.webp','./assets/goal_released.webp','./assets/habit_avoid.webp','./assets/habit_build.webp','./assets/habit_embedded.webp','./assets/habit_forming.webp','./assets/habit_fragile.webp','./assets/habit_interrupted.webp','./assets/habit_launching.webp','./assets/habit_limit.webp','./assets/habit_on_track.webp','./assets/habit_paused.webp','./assets/habit_recovering.webp','./assets/habit_retired.webp','./assets/habit_seed.webp','./assets/habit_stable.webp','./assets/habit_strengthening.webp','./assets/journal.webp','./assets/mode_achieve.webp','./assets/mode_explore.webp','./assets/mode_renew.webp','./assets/mode_resolve.webp','./assets/mode_sustain.webp','./assets/object_action.webp','./assets/object_discovery.webp','./assets/object_event.webp','./assets/object_goal.webp','./assets/object_habit.webp','./assets/object_inbox.webp','./assets/object_reference.webp','./assets/object_review.webp','./assets/on_time.webp','./assets/postponed.webp','./assets/priority_act.webp','./assets/priority_advance.webp','./assets/priority_clear.webp','./assets/priority_contain.webp','./assets/priority_defer.webp','./assets/priority_incubate.webp','./assets/priority_plan.webp','./assets/priority_protect.webp','./assets/priority_queue.webp','./assets/realm_family.webp','./assets/realm_financial.webp','./assets/realm_health.webp','./assets/realm_hm.webp','./assets/realm_professional.webp','./assets/realm_renew.webp','./assets/realm_side_hustle.webp','./assets/realm_social.webp','./assets/rescheduled.webp','./assets/resources.webp','./assets/risk.webp','./assets/risk_at_risk.webp','./assets/risk_critical.webp','./assets/risk_missing_next.webp','./assets/risk_no_execution.webp','./assets/risk_repeated.webp','./assets/risk_stalled.webp','./assets/risk_waiting.webp','./assets/risk_watch.webp','./assets/scene_campfire.webp','./assets/scene_discovery.webp','./assets/scene_goal.webp','./assets/scene_habit.webp','./assets/scene_priority.webp','./assets/scene_realm.webp','./assets/scene_renewal.webp','./assets/scene_today.webp','./assets/scene_victory.webp','./assets/settings.webp','./assets/signal_complete.webp','./assets/signal_idea.webp'];
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{
+  if(event.request.method!=='GET')return;
+  const url=new URL(event.request.url);
+  event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{
+    if(url.origin===location.origin&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy))}
+    return response;
+  }).catch(()=>event.request.mode==='navigate'?caches.match('./index.html'):Response.error())));
 });
