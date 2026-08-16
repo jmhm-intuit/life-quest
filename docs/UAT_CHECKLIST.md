@@ -1,43 +1,44 @@
-# Questline 3.4 User-Acceptance Checklist
+# Questline 3.5 User-Acceptance Checklist
 
-## Installation and persistence
+## Installation and migration
 
-- [ ] GitHub Pages URL opens on the phone.
+- [ ] GitHub Pages URL opens and reports version 3.5.0.
+- [ ] Existing Version 3.4 records migrate without losing dates or history.
 - [ ] Add to Home Screen launches in standalone mode.
-- [ ] App relaunches offline after one successful online load.
-- [ ] Data remains after closing and reopening the installed app.
+- [ ] Data remains after closing and reopening.
 
-## Today
+## Today and overdue
 
-- [ ] Planned and Due lenses show the same records from different date perspectives.
-- [ ] Starred toggle isolates top priorities.
-- [ ] Completed toggle groups finished activities at the end.
-- [ ] Priority sort uses the expected 3×3 order.
-- [ ] Overdue work is visually distinct from Today and future dates.
-- [ ] Planned date and moved count are easy to read.
+- [ ] Empty past dates do not render as full cards.
+- [ ] Incomplete past tasks appear in one Overdue group.
+- [ ] Overdue rows show days overdue and moved count.
+- [ ] Replan offers Today, Tomorrow, Next week, and Pick a date.
+- [ ] Priority sorting follows the approved Rank sequence.
+- [ ] Top Priority appears first inside its date.
 
-## Tasks
+## Task editing
 
-- [ ] A title-only task can be created quickly.
-- [ ] Importance and Urgency are easy to select on a phone.
-- [ ] Optional fields remain hidden until expanded.
-- [ ] Checklist steps can be added, completed, reordered, and removed.
-- [ ] Completing all checklist steps does not silently close the task.
+- [ ] Existing task changes auto-save without a native browser prompt.
+- [ ] New tasks still require Create.
+- [ ] Unified Date is the default.
+- [ ] Adding a separate deadline creates Plan for and Due by.
+- [ ] Importance and Urgency update Rank immediately.
+
+## Priority workspace
+
+- [ ] Mobile Priority Ladder is easy to scan.
+- [ ] Tapping a task opens a direct 3×3 Importance/Urgency editor.
+- [ ] Desktop Matrix remains usable with drag-and-drop.
 
 ## Habits
 
-- [ ] New Habit title is blank and uses a disappearing placeholder.
-- [ ] Weekly occurrence habits show weekday choices.
-- [ ] Monthly occurrence habits show a day-of-month choice.
-- [ ] Numeric habits do not show irrelevant date-pattern controls.
-- [ ] At least three upcoming occurrences are visible.
-- [ ] Moving one occurrence does not alter the future pattern by default.
-- [ ] Complete, Skip, and Move work from Today.
-- [ ] Review distinguishes skips from completions.
+- [ ] Habit can be completed from Habit detail.
+- [ ] Early completion removes unnecessary pending required occurrences.
+- [ ] Add extra works after target achievement.
+- [ ] Numeric Habit quantity can be updated directly.
+- [ ] Habit urgency changes as the period runs out.
 
-## Calendar and backup
+## Review and backup
 
-- [ ] Imported calendar event can be hidden and restored.
-- [ ] Hiding does not change the source calendar.
-- [ ] JSON export/import preserves checklist and hidden-event state.
-- [ ] Excel export/import preserves relationships and Version 3.4 metadata.
+- [ ] Review shows original, final, and completed dates plus movement count.
+- [ ] JSON and Excel export preserve Version 3.5 metadata and unified/split dates.

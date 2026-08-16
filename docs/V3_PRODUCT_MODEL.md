@@ -1,4 +1,4 @@
-# Questline 3.4 Product Model
+# Questline 3.5 Product Model
 
 ## User-managed records
 
@@ -9,42 +9,35 @@
 
 ## Planner activity
 
-Activity is a view, not a separate record. Today may show:
+Activity is a view, not a separate record. Today may show standalone Resolve tasks, Project tasks, Exploration tasks, Habit opportunities, Renew/Fun tasks, and imported calendar commitments.
 
-- Standalone Resolve task
-- Project task
-- Exploration task
-- Habit occurrence or numeric period activity
-- Renew/Fun task
-- Imported calendar commitment
+## Unified and split dates
 
-## Derived task states
+Most tasks use one Date. The user may intentionally add a separate deadline, producing Plan for and Due by fields.
 
-- Done: completion recorded
-- Overdue: incomplete and due date is past
-- Missed Plan: explicit planned date is past while due date remains open
-- In Progress: progress or checklist completion is above zero
-- Planned: planned date exists, or due date supplies the fallback display date
-- Unscheduled: neither planned nor due date exists
+- Unified task past its Date → Overdue
+- Split task past Plan for but before Due by → Missed Plan
+- Split task past Due by → Overdue
 
-## Priority order
+## Derived priority rank
 
-When Priority sorting is selected:
+Rank is calculated from Importance and Urgency:
 
-1. Importance 3 / Urgency 3
-2. 3 / 2
-3. 2 / 3
-4. 2 / 2
-5. 3 / 1
-6. 1 / 3
-7. 2 / 1
-8. 1 / 2
-9. 1 / 1
+1. R10: 3/3
+2. R9: 3/2
+3. R8: 2/3
+4. R7: 2/2
+5. R6: 3/1
+6. R5: 1/3
+7. R4: 2/1
+8. R3: 1/2
+9. R2: 1/1
+10. R1: unassessed
 
-## Habit occurrence outcomes
+## Habit activity
 
-- Planned
-- Completed
-- Skipped
+Habit definitions generate period-aware activities. Users can complete from Today or the Habit workspace, skip or move occurrences, and overdeliver after meeting the target.
 
-Skipping is intentional and is reported separately from completion and accidental misses.
+## Editing rule
+
+Create deliberately. Edit automatically. Delete carefully.

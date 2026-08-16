@@ -1,7 +1,7 @@
 {
-  "name": "Questline 3.4",
+  "name": "Questline 3.5",
   "short_name": "Questline",
-  "description": "A local-first mobile planner for fast task capture, checklists, habit schedules, quests, overdue recovery, and review.",
+  "description": "A local-first mobile planner with unified dates, auto-save, priority-ranked queues, proactive habit completion, quests, overdue recovery, and review.",
   "start_url": "./index.html?view=today",
   "scope": "./",
   "display": "standalone",

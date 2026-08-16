@@ -1,4 +1,4 @@
-# Questline 3.4 Deployment
+# Questline 3.5 Deployment
 
 ## Local computer and phone
 
@@ -14,18 +14,16 @@ Repository: `jmhm-intuit/life-quest`
 
 1. Push the deploy package contents to `main`.
 2. In **Settings → Pages**, select **GitHub Actions** as the source.
-3. The included workflow runs preflight checks and deploys the static site.
-4. Open:
-
-`https://jmhm-intuit.github.io/life-quest/`
+3. The included workflow runs syntax, preflight, and smoke checks and deploys the static site.
+4. Open `https://jmhm-intuit.github.io/life-quest/`.
 
 ## Updating from a phone terminal
 
-Place the deployment ZIP in the cloned repository and run the included deployment script:
+Place the deployment ZIP in the cloned repository and run the deployment script: 
 
 ```bash
-chmod +x deploy.sh
-./deploy.sh life-quest-v3.4-deploy.zip
+chmod +x deploy-life-quest-v3.5.sh
+./deploy-life-quest-v3.5.sh life-quest-v3.5-deploy.zip
 ```
 
-The script validates the archive before replacing the current site, commits changes only when necessary, and pushes to `main`.
+The script validates the archive before replacing the current site, preserves `.git`, commits only when needed, and pushes to `main`.

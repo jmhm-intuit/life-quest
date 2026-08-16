@@ -1,0 +1,310 @@
+{
+  "app": "Questline",
+  "version": "3.5.0",
+  "schemaVersion": 17,
+  "generatedAt": "2026-08-16T18:55:28.798960+00:00",
+  "passed": 60,
+  "total": 60,
+  "checks": [
+    {
+      "name": "320px title/version",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "320px no horizontal overflow",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "320px no runtime errors",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "360px title/version",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "360px no horizontal overflow",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "360px no runtime errors",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "390px title/version",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "390px no horizontal overflow",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "390px no runtime errors",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "430px title/version",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "430px no horizontal overflow",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "430px no runtime errors",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "768px title/version",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "768px no horizontal overflow",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "768px no runtime errors",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "1440px title/version",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "1440px no horizontal overflow",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "1440px no runtime errors",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Schema 17",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Storage version 3.5.0",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Today defaults to Priority order",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Today defaults to Schedule lens",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Overdue group visible",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Overdue has human-readable days late",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Overdue shows movement count",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "No empty/past date sections",
+      "passed": true,
+      "details": "[]"
+    },
+    {
+      "name": "Fixed calendar commitments separated",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Rank badges visible",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Top Priority is visually present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dedicated Replan sheet",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Four-date flow includes Today/Tomorrow/Next week",
+      "passed": true,
+      "details": "['Today', 'Tomorrow', 'Next week']"
+    },
+    {
+      "name": "Pick a date control present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Replan excludes priority/category fields",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Replan removes task from overdue queue",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Existing task editor opens",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Existing editor has no Save button",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Auto-save indicator visible",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Text auto-saves after pause",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Importance and Urgency near top",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Split task shows Plan for and Due by",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Close after edit triggers no native dialog",
+      "passed": true,
+      "details": "[]"
+    },
+    {
+      "name": "Auto-saved title is visible after close",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Unified task shows one Date field",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Add separate deadline available",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Separate deadline creates Plan for/Due by",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "One-line task creation available",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "One-line task creation adds one record",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Context derives Resolve category",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Mobile Priority Ladder has nine ranks",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Tap-based 3x3 priority editor has nine cells",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Priority editor shows resulting rank",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Habit workspace exposes proactive completion",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Habit workspace shows at least three upcoming occurrences",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Complete today updates habit from Habit view",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Date Reliability panel present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Review exposes original/final/completion concepts",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Mobile interaction run has no errors",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Desktop full Matrix visible",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Desktop mobile ladder hidden",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Desktop interaction run has no errors",
+      "passed": true,
+      "details": ""
+    }
+  ]
+}

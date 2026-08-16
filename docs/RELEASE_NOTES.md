@@ -1,70 +1,55 @@
-# Questline 3.4 Release Notes
+# Questline 3.5 Release Notes
 
-Questline 3.4 is a mobile usability release focused on faster task capture, clearer priorities, flexible habit planning, and stronger overdue recovery. It preserves the approved Questline visual assets.
+Questline 3.5 consolidates dates, removes save/discard friction, makes priority ranking operational in the daily planner, improves overdue recovery, and allows habits to be completed proactively from their own workspace. Approved Questline artwork remains unchanged.
 
-## Today planner
+## Unified task dates
 
-- Planned and Due remain the two primary date lenses.
-- Added Starred and Completed visibility toggles.
-- Sorting moved to a compact sheet with Manual, Priority, Quest, and Recent options.
-- Priority order follows: 3/3, 3/2, 2/3, 2/2, 3/1, 1/3, 2/1, 1/2, 1/1.
-- Overdue work uses a distinct red treatment; Missed Plan uses amber.
-- Planned dates and movement counts are visible in compact rows.
-- Ordinary tasks no longer emphasize start/end times.
-- Calendar commitments retain their times and may be hidden locally without changing the source calendar.
+- New tasks use one **Date** by default.
+- That date controls both scheduling and overdue behavior.
+- **Add separate deadline** intentionally splits the task into **Plan for** and **Due by**.
+- Existing tasks with distinct planned and due dates preserve split mode.
+- Original dates and movement histories remain available in Review.
 
-## Task capture and editing
+## Auto-save
 
-- New tasks require only a title.
-- Context provides Project, Exploration, Resolve, workstream, area, and selected date defaults.
-- Importance and Urgency are visible at the top of task details.
-- Optional details remain collapsed.
-- Generic manual Task Status is removed from the editor; state is derived from completion, progress, and dates.
-- Added one-level task checklists. Completing all steps does not automatically complete the parent task.
+- Existing-task edits save automatically.
+- Structured changes save immediately.
+- Text changes save after a short pause.
+- The native browser unsaved-changes dialog is removed.
+- New records still require a deliberate Create action.
+
+## Priority-ranked Today queue
+
+- Importance and Urgency derive a Rank from 2–10; unassessed work uses Rank 1.
+- Priority ordering follows: 3/3, 3/2, 2/3, 2/2, 3/1, 1/3, 2/1, 1/2, 1/1.
+- Today remains grouped by date and orders flexible work by Top Priority and Rank.
+- Habit urgency is derived from period pace and remaining opportunities.
+- Mobile replaces the tall Matrix-cell list with a Priority Ladder and tap-based 3×3 editor.
+- Desktop retains the full Matrix.
+
+## Overdue and replanning
+
+- Empty past date cards are hidden.
+- Incomplete past work is consolidated into a prominent Overdue group.
+- Overdue rows show days late, original commitment, and movement count.
+- Replanning uses a compact dedicated sheet with **Today**, **Tomorrow**, **Next week**, and **Pick a date**.
+- Importance, urgency, category, and notes are intentionally absent from the replan sheet.
 
 ## Habits
 
-- Habit titles use true placeholders and cannot save blank records.
-- Preferred weekdays appear only for weekly occurrence habits.
-- Preferred day-of-month appears only for monthly occurrence habits.
-- Habit health is derived from completion history.
-- At least three upcoming occurrences are shown.
-- Moving an occurrence defaults to this occurrence only; future pattern changes are optional.
-- Today supports Complete, Skip, and Move for occurrence habits.
-- Skips are recorded separately from completions and accidental misses in Review.
+- Habit detail supports **Complete today** or **Add extra** after the target is achieved.
+- Completing early consumes the earliest pending occurrence or creates an ad-hoc completion.
+- Once a period target is achieved, unused generated occurrences no longer remain active in Today.
+- Numeric habits can be updated directly.
+- Habit urgency and health are derived rather than manually maintained.
 
+## Review
 
-## Compact planning sheets
-
-- Rebuilt Add to Date as three compact, high-contrast choices with small functional icons.
-- Rebuilt Plan Next Days as a dense planning queue; empty categories are hidden and actionable candidates remain visible together.
-- Parchment sheets now use dark navy text and compact controls instead of oversized illustrations.
-
-## Task editor hierarchy
-
-- Save Changes is the dominant footer action.
-- Complete remains a compact title control and is primarily performed from planner lists.
-- Remove from active lists and Move to Trash are now rare actions under the overflow menu.
-- Unsaved edits trigger a discard confirmation.
-
-## Projects and ideas
-
-- Workstreams can be renamed, moved, archived, restored, or deleted without silently deleting Tasks.
-- Open Tasks move to Unassigned when a workstream is archived or deleted.
-- Exploration entries can be edited, pinned, actioned, archived, restored, or moved to Trash while preserving linked Tasks.
-
-## Habit target completion
-
-- When a Habit reaches its period target, unused automatically generated occurrences no longer remain in the active planner.
-- Manually added extra occurrences remain available as Optional extra activities.
-
-## Calendar and data
-
-- Imported calendar events can be hidden from Questline and restored later.
-- Hidden calendar IDs, top-priority dates, recurring achievements, and quiet-area choices are included in JSON and Excel round trips.
+- Date Reliability shows original date, final date, completion date, movement count, and early/on-time/late outcomes.
+- High-priority work can be reviewed against actual progress without hiding small wins.
 
 ## Version metadata
 
-- Version: `3.4.0`
-- Schema: `16`
+- Version: `3.5.0`
+- Schema: `17`
 - Channel: `stable`

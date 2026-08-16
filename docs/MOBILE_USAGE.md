@@ -1,34 +1,28 @@
-# Questline 3.4 Mobile Usage
+# Questline 3.5 Mobile Usage
 
-## Plan the day
+## Plan and replan work
 
 1. Open **Today**.
-2. Review the red **Overdue** section first.
-3. Switch between **Planned** and **Due** when needed.
-4. Use **Starred** to isolate top priorities.
-5. Tap **Sort** to use Manual, Priority, Quest, or Recent order.
-6. Complete, update, move, or open an activity directly from its row.
+2. Review the red **Overdue** queue first.
+3. Tap a date or **Replan** to choose **Today**, **Tomorrow**, **Next week**, or **Pick a date**.
+4. Use **Priority** sorting to see Top Priority and higher-ranked work first inside each date.
+5. Use **Starred** to isolate the single top-priority activity for a date.
 
-## Add a task
+## Edit an existing task
 
-- From Today, Tasks, a Project, or an Exploration, type a title and add it.
-- The current context supplies the default category and date.
-- Open details only when Importance, Urgency, dates, checklist steps, or notes are needed.
+- Open the task. Existing-record changes auto-save.
+- Importance and Urgency remain near the top.
+- Use one Date by default. Select **Add separate deadline** only when you need a different final deadline.
+- Close the sheet whenever finished; no Save/Discard prompt is needed.
 
-## Use a task checklist
+## Complete a habit proactively
 
-- Open the task and add lightweight checklist steps.
-- Check each step independently.
-- The parent task remains open until you complete it explicitly.
+1. Open **Questbook → Habits**.
+2. Open the Habit.
+3. Use **Complete today** without first finding its occurrence in Today.
+4. After the target is achieved, use **Add extra** for optional overdelivery.
+5. Upcoming occurrences remain editable, including **this occurrence only** or **this and future occurrences**.
 
-## Plan habits
+## Review date reliability
 
-- Open **Questbook → Habits**.
-- Occurrence habits show at least the next three dates.
-- Move a date and choose **This occurrence only** or **This and future occurrences**.
-- In Today, use **Complete**, **Skip**, or **Move**.
-- Numeric habits use quantity progress rather than separate occurrences.
-
-## Hide a calendar event
-
-Tap **Hide** on an imported calendar commitment. The source Google or Outlook event is unchanged. Restore it from the Calendar screen.
+Review shows original commitment, final date, completion date, and number of moves for completed tasks.
