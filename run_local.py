@@ -58,7 +58,7 @@ if server is None or port is None:
 host = local_network_ip()
 local_url = f"http://localhost:{port}/index.html"
 network_url = f"http://{host}:{port}/index.html"
-print(f"Questline v3.3.0 desktop: {local_url}")
+print(f"Questline v3.4.0 desktop: {local_url}")
 print(f"Questline phone (same Wi-Fi): {network_url}")
 print("Press Ctrl+C to stop the local server.")
 threading.Timer(0.5, lambda: webbrowser.open(local_url)).start()

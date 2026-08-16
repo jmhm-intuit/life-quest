@@ -1,1 +1,6 @@
-{"name":"Questline","version":"3.3.0","schemaVersion":15,"channel":"release","released":"2026-08-15"}
+{
+  "app": "Questline",
+  "version": "3.4.0",
+  "schemaVersion": 16,
+  "channel": "stable"
+}

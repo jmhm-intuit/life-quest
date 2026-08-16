@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 set -eu
 
-ZIP_FILE=${1:-life-quest-v3.3-deploy.zip}
-TMP_DIR="/tmp/life-quest-v3.3-$$"
+ZIP_FILE=${1:-life-quest-v3.4-deploy.zip}
+TMP_DIR="/tmp/life-quest-v3.4-$$"
 
 cleanup() {
   rm -rf "$TMP_DIR"
@@ -17,6 +17,14 @@ fi
 if [ ! -f "$ZIP_FILE" ]; then
   echo "ERROR: deployment archive not found: $ZIP_FILE"
   exit 1
+fi
+
+git fetch origin main
+
+if git show-ref --verify --quiet refs/heads/main; then
+  git switch main >/dev/null 2>&1
+else
+  git switch -c main --track origin/main >/dev/null 2>&1
 fi
 
 git pull --rebase origin main
@@ -58,7 +66,7 @@ git add -A
 if git diff --cached --quiet; then
   echo "No new changes to commit."
 else
-  git commit -m "Deploy Questline v3.3.0"
+  git commit -m "Deploy Questline v3.4.0"
 fi
 
 git push origin main

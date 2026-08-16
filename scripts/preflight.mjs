@@ -19,8 +19,8 @@ for (const rel of required) {
 let version;
 try {
   version = JSON.parse(fs.readFileSync(path.join(root, 'version.json'), 'utf8'));
-  if (version.version !== '3.3.0') fail(`version.json version is ${version.version}`); else pass('version 3.3.0');
-  if (Number(version.schemaVersion) !== 15) fail(`schema is ${version.schemaVersion}`); else pass('schema 15');
+  if (version.version !== '3.4.0') fail(`version.json version is ${version.version}`); else pass('version 3.4.0');
+  if (Number(version.schemaVersion) !== 16) fail(`schema is ${version.schemaVersion}`); else pass('schema 16');
 } catch (error) { fail(`invalid version.json: ${error.message}`); }
 
 try { JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8')); pass('manifest JSON'); }
@@ -29,7 +29,7 @@ try { JSON.parse(fs.readFileSync(path.join(root, 'assets/asset-manifest.json'), 
 catch (error) { fail(`invalid asset manifest: ${error.message}`); }
 
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-for (const marker of ['Questline v3.3.0','app.css','app.js','manifest.webmanifest']) {
+for (const marker of ['Questline v3.4.0','app.css','app.js','manifest.webmanifest']) {
   index.includes(marker) ? pass(`index includes ${marker}`) : fail(`index missing ${marker}`);
 }
 
@@ -47,4 +47,4 @@ try {
 } catch (error) { fail(`service worker preflight failed: ${error.message}`); }
 
 if (process.exitCode) process.exit(process.exitCode);
-console.log('Questline 3.3 preflight complete.');
+console.log('Questline 3.4 preflight complete.');

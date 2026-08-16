@@ -1,4 +1,4 @@
-# Questline 3.3
+# Questline 3.4
 
 Questline is a local-first, mobile-first planning app that connects daily tasks, quests, habits, and progress review.
 
@@ -20,8 +20,8 @@ Expected project URL for the current repository:
 
 ## Version
 
-- Application: `3.3.0`
-- Data schema: `15`
-- Storage key: `questline-v3-3`
+- Application: `3.4.0`
+- Data schema: `16`
+- Storage key: `questline-v3-4`
 
 Personal Questline data stays in the browser. Export JSON or Excel backups before substantial updates.
