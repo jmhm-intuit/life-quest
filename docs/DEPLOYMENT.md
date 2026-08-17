@@ -1,4 +1,4 @@
-# Questline 3.5 Deployment
+# Questline 3.6 Deployment
 
 ## Local computer and phone
 
@@ -22,8 +22,8 @@ Repository: `jmhm-intuit/life-quest`
 Place the deployment ZIP in the cloned repository and run the deployment script: 
 
 ```bash
-chmod +x deploy-life-quest-v3.5.sh
-./deploy-life-quest-v3.5.sh life-quest-v3.5-deploy.zip
+chmod +x deploy-life-quest-v3.6.sh
+./deploy-life-quest-v3.6.sh life-quest-v3.6-deploy.zip
 ```
 
 The script validates the archive before replacing the current site, preserves `.git`, commits only when needed, and pushes to `main`.

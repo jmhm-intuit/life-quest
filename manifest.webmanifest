@@ -1,7 +1,7 @@
 {
-  "name": "Questline 3.5",
+  "name": "Questline 3.6",
   "short_name": "Questline",
-  "description": "A local-first mobile planner with unified dates, auto-save, priority-ranked queues, proactive habit completion, quests, overdue recovery, and review.",
+  "description": "A local-first mobile planner with life-area review, Habit cycle reconciliation, actionable Exploration, Project decomposition, and dated daily execution.",
   "start_url": "./index.html?view=today",
   "scope": "./",
   "display": "standalone",
