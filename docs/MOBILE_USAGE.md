@@ -1,16 +1,13 @@
-# Questline 3.6 Mobile Usage
+# Questline 3.7 Mobile Usage
 
-## Today
-Use Today to complete, progress, or replan dated work. Overdue work remains first.
+## Star several Activities
 
-## Projects
-Use Plan to break an outcome into workstreams and Tasks. Keep one visible Next Move.
+Tap the star on any Task or Habit Activity. More than one item can remain Starred on the same date. Use the Starred filter in Today to see only those items.
 
-## Explorations
-Use Next Steps for concrete research Tasks and Investigation for Questions, Experiments, Options, Evidence, and Decisions.
+## Change Task priority
 
-## Habits
-Use Review cycle to reconcile frequent Habits. Use Plan next to adjust future occurrences. Monthly Habits emphasize planning while weekly multi-occurrence Habits emphasize review.
+Open a Task or tap its Rank badge, then choose the visual Importance and Urgency emblems. Rank updates automatically.
 
-## Review
-Review opens by life area. Celebrate Strong Momentum first, then inspect areas that Need Proactive Focus or are Dormant.
+## Change Habit priority
+
+Open the Habit, expand **More details**, then choose Importance. Leave Urgency on **Auto** to use period pace, or select Low, Medium, or High as an explicit override.

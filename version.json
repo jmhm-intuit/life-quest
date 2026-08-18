@@ -1,6 +1,6 @@
 {
   "app": "Questline",
-  "version": "3.6.0",
-  "schemaVersion": 18,
-  "channel": "stable"
+  "version": "3.7.0",
+  "schemaVersion": 19,
+  "storageKey": "questline-v3-7"
 }

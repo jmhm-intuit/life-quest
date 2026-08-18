@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-OUT = ROOT.parent / 'Questline_v3_6_Mobile_Standalone.html'
+OUT = ROOT.parent / 'Questline_v3_7_Mobile_Standalone.html'
 
 html = (ROOT / 'index.html').read_text(encoding='utf-8')
 css = (ROOT / 'app.css').read_text(encoding='utf-8')

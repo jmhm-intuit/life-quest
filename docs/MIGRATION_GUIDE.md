@@ -1,19 +1,7 @@
-# Migration to Questline 3.6
+# Migration to Questline 3.7
 
-Questline 3.6 uses schema 18 and storage key `questline-v3-6`.
+Questline 3.7 uses schema 19 and storage key `questline-v3-7`.
 
-On first launch it can read earlier Questline stores, including `questline-v3-5`. Existing Tasks, Projects, Explorations, Habits, date history, checklists, workstreams, Ideas, and Review data are preserved.
+On first launch, the app looks for Questline 3.6 and earlier local data, creates a migration backup, and converts each date's prior single Top Priority value into a list of Starred Activities. Habit records gain an optional `urgencyOverride`; no override means urgency remains automatic.
 
-New fields are added conservatively:
-
-- `secondaryAreas` defaults to an empty list.
-- Exploration entries preserve or receive `taskIds`.
-- Existing unified and split Task dates remain unchanged.
-- Habit occurrence history remains intact.
-
-Before migration:
-
-1. Open the previous version.
-2. Export JSON or Excel.
-3. Deploy Version 3.6.
-4. Open the updated app and inspect Today, Questbook, Habits, and Review.
+Export a JSON or Excel backup before extended testing on real data.

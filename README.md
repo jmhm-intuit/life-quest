@@ -1,27 +1,20 @@
-# Questline 3.6
+# Questline 3.7
 
-Questline is a local-first, mobile-first planning app that turns broad Projects and Explorations into schedulable Tasks, manages recurring Habits by cycle, and reviews progress by life area.
+Mobile-first local PWA for planning Tasks, Projects, Explorations, Habits, and Reviews.
 
-## Run locally
+## Release metadata
 
-```bash
-python run_local.py
-```
+- Version: `3.7.0`
+- Schema: `19`
+- Storage key: `questline-v3-7`
+- Public site: `https://jmhm-intuit.github.io/life-quest/`
 
-Open the printed desktop or local-network address.
+## Highlights
 
-## GitHub Pages
+- Approved visual assets for Importance 1–3, Urgency 1–3, and Rank R10–R1
+- Multiple Starred Tasks or Habit Activities on the same date
+- Habit Importance and optional Urgency override under **More details**
+- Automatic Habit urgency remains the default
+- Existing Version 3.6 features and local data migration retained
 
-The package includes `.github/workflows/pages.yml`. Push the repository to `main`, set **Settings → Pages → Source** to **GitHub Actions**, and the workflow validates and deploys the static application.
-
-Expected URL:
-
-`https://jmhm-intuit.github.io/life-quest/`
-
-## Version
-
-- Application: `3.6.0`
-- Data schema: `18`
-- Storage key: `questline-v3-6`
-
-Personal Questline data stays in the browser. Export JSON or Excel backups before substantial updates.
+Run locally with `python run_local.py`.

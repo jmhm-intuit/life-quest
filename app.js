@@ -1,11 +1,11 @@
 (() => {
 'use strict';
 
-const VERSION = '3.6.0';
-const SCHEMA_VERSION = 18;
-const STORAGE_KEY = 'questline-v3-6';
+const VERSION = '3.7.0';
+const SCHEMA_VERSION = 19;
+const STORAGE_KEY = 'questline-v3-7';
 const LEGACY_KEYS = [
-  'questline-v3-5','questline-v3-4','questline-v3-3','questline-v3-beta2','questline-v3-beta1','questline-v2-beta2','questline-v2-beta1','questline-v1-rc2',
+  'questline-v3-6','questline-v3-5','questline-v3-4','questline-v3-3','questline-v3-beta2','questline-v3-beta1','questline-v2-beta2','questline-v2-beta1','questline-v1-rc2',
   'questline-gate8-release-candidate-v1','questline-gate7-integration-v1',
   'questline-gate6d-status-v1','questline-mvp-v1'
 ];
@@ -24,7 +24,10 @@ const A = {
   goal_goal:'assets/goal_goal.webp',goal_milestone:'assets/goal_milestone.webp',goal_next:'assets/goal_next.webp',goal_progress:'assets/goal_progress.webp',goal_completed:'assets/goal_completed.webp',goal_paused:'assets/goal_paused.webp',goal_released:'assets/goal_released.webp',
   discovery_new:'assets/discovery_new.webp',discovery_question:'assets/discovery_question.webp',discovery_step:'assets/discovery_step.webp',discovery_research:'assets/discovery_research.webp',discovery_consult:'assets/discovery_consult.webp',discovery_experiment:'assets/discovery_experiment.webp',discovery_evidence:'assets/discovery_evidence.webp',discovery_option:'assets/discovery_option.webp',decision_reached:'assets/decision_reached.webp',decision_criteria:'assets/decision_criteria.webp',decision_archived:'assets/decision_archived.webp',
   badge_first:'assets/badge_first.webp',badge_momentum:'assets/badge_momentum.webp',badge_strategic:'assets/badge_strategic.webp',badge_habit:'assets/badge_habit.webp',badge_loop:'assets/badge_loop.webp',badge_pathfinder:'assets/badge_pathfinder.webp',badge_clear:'assets/badge_clear.webp',badge_deadline:'assets/badge_deadline.webp',badge_recovery:'assets/badge_recovery.webp',badge_renewal:'assets/badge_renewal.webp',badge_balanced:'assets/badge_balanced.webp',badge_campfire:'assets/badge_campfire.webp',badge_questmaster:'assets/badge_questmaster.webp',
-  signal_complete:'assets/signal_complete.webp',signal_idea:'assets/signal_idea.webp'
+  signal_complete:'assets/signal_complete.webp',signal_idea:'assets/signal_idea.webp',
+  importance_1:'assets/importance_1.webp',importance_2:'assets/importance_2.webp',importance_3:'assets/importance_3.webp',
+  urgency_1:'assets/urgency_1.webp',urgency_2:'assets/urgency_2.webp',urgency_3:'assets/urgency_3.webp',
+  rank_10:'assets/rank_10.webp',rank_9:'assets/rank_9.webp',rank_8:'assets/rank_8.webp',rank_7:'assets/rank_7.webp',rank_6:'assets/rank_6.webp',rank_5:'assets/rank_5.webp',rank_4:'assets/rank_4.webp',rank_3:'assets/rank_3.webp',rank_2:'assets/rank_2.webp',rank_1:'assets/rank_1.webp'
 };
 
 const AREAS = ['Professional','Financial','Social','Health','Family','HM','Side Hustle','Renew/Fun'];
@@ -133,7 +136,7 @@ function defaultState(){
     reviews:[],badges:{badge_first:addDays(t,-30),badge_momentum:addDays(t,-10)},recurringAchievements:{habitKeeper:{periods:3,currentStreak:2,bestStreak:2,lastPeriod:addDays(t,-7).slice(0,7)}},
     quietAreas:{},tombstones:[],settings:{planningHorizonDays:7,dailyCapacityMinutes:240,reviewPeriod:'week',motion:true},
     ui:{view:'today',todayLens:'planned',plannerStart:t,todaySort:'priority',tasksTab:'Resolve',questbookTab:'quests',questFilter:'All',questSort:'manual',selectedQuestId:null,questTab:'overview',questTaskFilter:'All',captureType:'Task',captureDraft:'',captureTab:'new',reviewRange:'week',matrixCell:'High-High',taskArea:'All',questTaskTrack:'All',returnContext:null,search:''},
-    topPriorityByDate:{[fri]:'task:t-role-profile'}
+    topPriorityByDate:{[fri]:['task:t-role-profile']}
   };
 }
 
@@ -441,7 +444,7 @@ function renderRecurringAchievement(){const r=state.recurringAchievements.habitK
 function renderCalendar(){const events=[...state.calendarEvents].sort((a,b)=>a.date.localeCompare(b.date)||String(a.startTime).localeCompare(String(b.startTime)));root.innerHTML=`${hero({title:'Calendar Commitments',subtitle:'Read-only imported calendar context appears in Today. Convert a commitment into a Task only when you need preparation, follow-up, or completion tracking.',scene:'scene_today',meta:[['Events',String(events.length)],['Source','Manual or .ics snapshot'],['Write access','Disabled'],['Version',`v${VERSION}`]]})}<section class="panel">${panelHead('Calendar','Fixed commitments reduce available capacity without becoming duplicate Tasks.','object_event','<button class="button primary small" data-import-ics>Import .ics</button>')}<div class="stack">${events.length?events.map(e=>`<div class="inbox-row"><div><strong>${esc(e.title)}</strong><small>${fmtDay(e.date)} · ${fmtTime(e.startTime)}${e.endTime?`–${fmtTime(e.endTime)}`:''} · ${esc(e.area)}</small></div><button class="button tiny ghost" data-calendar-to-task="${e.id}">Create linked Task</button></div>`).join(''):'<div class="empty">No calendar events imported.</div>'}</div></section>`}
 function renderNotes(){const list=[...state.notes].sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)));root.innerHTML=`${hero({title:'Notes & Resources',subtitle:'Ideas, evidence, decisions, and references can remain non-actionable or create one or more Quest tasks.',scene:'scene_discovery',meta:[['Notes',String(list.length)],['Inbox',String(state.inbox.filter(i=>i.status==='open').length)],['Quest-linked',String(list.filter(n=>n.questId).length)],['Version',`v${VERSION}`]]})}<section class="panel">${panelHead('Notes','Open a Quest to see its structured exploration entries. This view includes standalone notes and references.','object_reference','<button class="button primary small" data-new-note>+ Note</button>')}<div class="stack">${list.length?list.map(n=>`<article class="inbox-row"><div><strong>${esc(n.type||'Note')} · ${esc(n.text||n.title||'')}</strong><small>${n.questId?`Quest: ${esc(questById(n.questId)?.title||'Unknown')}`:'Standalone'} · ${fmtDate(n.createdAt?.slice(0,10))}</small></div>${n.questId?`<button class="button tiny ghost" data-open-quest="${n.questId}">Open Quest</button>`:''}</article>`).join(''):'<div class="empty">No notes or resources.</div>'}</div></section>`}
 function renderSync(){root.innerHTML=`${hero({title:'Data & Sync',subtitle:'Data remains local. Export a JSON or Excel workbook, move it through Google Drive, and import it on another device.',scene:'scene_today',meta:[['Tasks',String(state.tasks.length)],['Quests',String(state.quests.length)],['Habits',String(state.habits.length)],['Version',`v${VERSION}`]]})}<div class="grid two"><section class="panel">${panelHead('Export','Create a complete local backup.','object_reference')}<div class="stack"><button class="button primary" data-export-json>Export JSON Backup</button><button class="button primary" data-export-excel>Export Excel Workbook</button></div></section><section class="panel">${panelHead('Import','Newer records replace older records by ID and timestamp.','object_inbox')}<button class="button primary" data-import-file>Import JSON or Excel</button></section><section class="panel">${panelHead('Manual phone ↔ desktop sync','1. Export on the first device. 2. Save the workbook in Google Drive. 3. Import it on the second device.','resources')}<p class="muted">Quest links, Task tracks, Habit periods, planned-date history, reviews, and recurring achievements are preserved.</p></section><section class="panel">${panelHead('Version Metadata','Exports record the deployed app and data-schema versions.','brand')}<p><strong>Questline v${VERSION}</strong></p><p class="muted">Schema ${SCHEMA_VERSION} · Storage key ${STORAGE_KEY}</p></section></div>`}
-function renderSettings(){root.innerHTML=`${hero({title:'Settings',subtitle:'Adjust planning horizon, daily capacity, review period, and motion. The app version is visible here and in exports.',scene:'scene_today',meta:[['Version',`v${VERSION}`],['Schema',String(SCHEMA_VERSION)],['Storage','Local browser'],['Horizon',`${state.settings.planningHorizonDays} days`]]})}<div class="grid two"><section class="panel">${panelHead('Planning','Seven days is the default, but you can plan farther forward at any time.','character_plan')}<div class="form-grid"><div class="form-field"><label>Planning horizon (days)</label><input id="setting-horizon" type="number" min="1" max="90" value="${state.settings.planningHorizonDays}"></div><div class="form-field"><label>Daily capacity (minutes)</label><input id="setting-capacity" type="number" min="30" max="720" step="15" value="${state.settings.dailyCapacityMinutes}"></div><div class="form-field"><label>Review period</label><select id="setting-review"><option value="week" ${state.settings.reviewPeriod==='week'?'selected':''}>Week</option><option value="month" ${state.settings.reviewPeriod==='month'?'selected':''}>Month</option></select></div></div><button class="button primary" style="margin-top:10px" data-save-settings>Save Settings</button></section><section class="panel">${panelHead('Application Version','The version is visible in navigation, Settings, exports, and the browser title.','brand')}<h3>Questline v${VERSION}</h3><p class="muted">Version 3.3 · Faster task capture, checklists, Habit scheduling, priority order, and overdue recovery.</p><code>schema ${SCHEMA_VERSION}</code></section><section class="panel">${panelHead('Display','Motion respects system preferences and can be disabled.','settings')}<label class="inbox-row"><div><strong>Celebration motion</strong><small>Lightweight feedback for progress and recovery.</small></div><input id="setting-motion" type="checkbox" ${state.settings.motion?'checked':''}></label></section><section class="panel">${panelHead('Reset Demo','Replace local data with the Version 3 sample portfolio.','risk_critical')}<button class="button danger" data-reset-demo>Reset local data</button></section></div>`}
+function renderSettings(){root.innerHTML=`${hero({title:'Settings',subtitle:'Adjust planning horizon, daily capacity, review period, and motion. The app version is visible here and in exports.',scene:'scene_today',meta:[['Version',`v${VERSION}`],['Schema',String(SCHEMA_VERSION)],['Storage','Local browser'],['Horizon',`${state.settings.planningHorizonDays} days`]]})}<div class="grid two"><section class="panel">${panelHead('Planning','Seven days is the default, but you can plan farther forward at any time.','character_plan')}<div class="form-grid"><div class="form-field"><label>Planning horizon (days)</label><input id="setting-horizon" type="number" min="1" max="90" value="${state.settings.planningHorizonDays}"></div><div class="form-field"><label>Daily capacity (minutes)</label><input id="setting-capacity" type="number" min="30" max="720" step="15" value="${state.settings.dailyCapacityMinutes}"></div><div class="form-field"><label>Review period</label><select id="setting-review"><option value="week" ${state.settings.reviewPeriod==='week'?'selected':''}>Week</option><option value="month" ${state.settings.reviewPeriod==='month'?'selected':''}>Month</option></select></div></div><button class="button primary" style="margin-top:10px" data-save-settings>Save Settings</button></section><section class="panel">${panelHead('Application Version','The version is visible in navigation, Settings, exports, and the browser title.','brand')}<h3>Questline v${VERSION}</h3><p class="muted">Version 3.7 · Visual priority assets, multiple Starred items, and Habit priority controls.</p><code>schema ${SCHEMA_VERSION}</code></section><section class="panel">${panelHead('Display','Motion respects system preferences and can be disabled.','settings')}<label class="inbox-row"><div><strong>Celebration motion</strong><small>Lightweight feedback for progress and recovery.</small></div><input id="setting-motion" type="checkbox" ${state.settings.motion?'checked':''}></label></section><section class="panel">${panelHead('Reset Demo','Replace local data with the Version 3 sample portfolio.','risk_critical')}<button class="button danger" data-reset-demo>Reset local data</button></section></div>`}
 
 function openTaskEditor(existing=null,defaults={}){
   const t=existing?normalizeTask(existing):normalizeTask({id:uid('task'),title:defaults.title||'',area:defaults.area||'Professional',questId:defaults.questId||null,track:defaults.track||null,standaloneType:defaults.standaloneType||'Resolve',workstreamId:defaults.workstreamId||null,status:'To Do',progress:0,plannedDate:defaults.plannedDate||null,startTime:defaults.startTime||null,endTime:defaults.endTime||null,dueDate:defaults.dueDate||null,importance:'Medium',urgency:'Medium',estimateMinutes:defaults.estimateMinutes||0,plannedOrder:99,createdAt:nowStamp(),updatedAt:nowStamp(),sourceEntryId:defaults.sourceEntryId||null});
@@ -524,8 +527,8 @@ function updateSearch(){const q=String($('#search-input')?.value||'').trim().toL
 
 function snapshot(){return{appVersion:VERSION,schemaVersion:SCHEMA_VERSION,exportedAt:nowStamp(),profile:state.profile,settings:state.settings,ui:{},tasks:state.tasks,quests:state.quests,habits:state.habits,notes:state.notes,inbox:state.inbox,calendarEvents:state.calendarEvents,reviews:state.reviews,badges:state.badges,recurringAchievements:state.recurringAchievements,quietAreas:state.quietAreas,tombstones:state.tombstones,topPriorityByDate:state.topPriorityByDate}}
 function downloadBlob(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500)}
-function exportJSON(){downloadBlob(new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'}),`questline-v3.6-${todayISO()}.json`);toast('JSON backup exported','object_reference')}
-async function exportExcel(){try{if(!window.QuestlineExcel)throw new Error('Excel engine unavailable');const s=snapshot();const compat={version:3,appVersion:VERSION,schemaVersion:SCHEMA_VERSION,exportedAt:s.exportedAt,profile:s.profile,settings:s.settings,appmeta:{id:'appmeta',appVersion:VERSION,schemaVersion:SCHEMA_VERSION,updatedAt:nowStamp()},actions:s.tasks,campaigns:s.quests,habits:s.habits,captures:s.inbox,decisions:s.notes.filter(n=>n.type==='Decision'),events:s.calendarEvents,reviews:s.reviews,resources:s.notes,tombstones:s.tombstones,trash:[]};await window.QuestlineExcel.exportState(compat,`questline-v3.6-${todayISO()}.xlsx`);toast('Excel workbook exported','resources')}catch(e){toast(`Excel export failed: ${e.message}`,'risk_critical')}}
+function exportJSON(){downloadBlob(new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'}),`questline-v3.7-${todayISO()}.json`);toast('JSON backup exported','object_reference')}
+async function exportExcel(){try{if(!window.QuestlineExcel)throw new Error('Excel engine unavailable');const s=snapshot();const compat={version:3,appVersion:VERSION,schemaVersion:SCHEMA_VERSION,exportedAt:s.exportedAt,profile:s.profile,settings:s.settings,appmeta:{id:'appmeta',appVersion:VERSION,schemaVersion:SCHEMA_VERSION,updatedAt:nowStamp()},actions:s.tasks,campaigns:s.quests,habits:s.habits,captures:s.inbox,decisions:s.notes.filter(n=>n.type==='Decision'),events:s.calendarEvents,reviews:s.reviews,resources:s.notes,tombstones:s.tombstones,trash:[]};await window.QuestlineExcel.exportState(compat,`questline-v3.7-${todayISO()}.xlsx`);toast('Excel workbook exported','resources')}catch(e){toast(`Excel export failed: ${e.message}`,'risk_critical')}}
 function mergeById(local,incoming){const map=new Map((local||[]).map(x=>[x.id,x]));let added=0,updated=0;for(const item of incoming||[]){if(!item?.id)continue;const cur=map.get(item.id);if(!cur){map.set(item.id,item);added++}else if(String(item.updatedAt||item.createdAt||'')>String(cur.updatedAt||cur.createdAt||'')){map.set(item.id,item);updated++}}return{items:[...map.values()],added,updated}}
 function applySnapshot(incoming){const m=incoming?.schemaVersion>=SCHEMA_VERSION&&Array.isArray(incoming.tasks)?incoming:migrateLegacy(incoming,'import');if(!m)throw new Error('Unsupported Questline data');let added=0,updated=0;for(const key of ['tasks','quests','habits','notes','inbox','calendarEvents','reviews','tombstones']){const r=mergeById(state[key],m[key]);state[key]=r.items;added+=r.added;updated+=r.updated}state.badges={...state.badges,...(m.badges||{})};state.recurringAchievements={...state.recurringAchievements,...(m.recurringAchievements||{})};state.quietAreas={...state.quietAreas,...(m.quietAreas||{})};ensureState();save();render();return{added,updated}}
 function recordsToSnapshot(records){const old={schemaVersion:2};for(const r of records){if(['profile','settings','appmeta'].includes(r.type))old[r.type]=r.payload;else{old[r.type]=old[r.type]||[];old[r.type].push(r.payload)}}return migrateLegacy(old,'excel-import')}
@@ -1258,7 +1261,7 @@ async function exportExcel(){
       tombstones:s.tombstones,
       trash:[]
     };
-    await window.QuestlineExcel.exportState(compat,`questline-v3.6-${todayISO()}.xlsx`);
+    await window.QuestlineExcel.exportState(compat,`questline-v3.7-${todayISO()}.xlsx`);
     toast('Excel workbook exported','resources');
   }catch(e){toast(`Excel export failed: ${e.message}`,'risk_critical')}
 }
@@ -1468,7 +1471,7 @@ function v35UnifyTaskDate(id){const t=taskById(id);if(!t)return;showModal(`${mod
 function v35ApplyUnifyChoice(id,choice){const t=taskById(id);if(!t)return;const date=choice==='due'?(t.dueDate||t.plannedDate):(t.plannedDate||t.dueDate);t.dateMode='unified';t.date=date;t.originalDate=t.originalDate||t.originalPlannedDate||t.originalDueDate||date;t.plannedDate=date;t.dueDate=date;t.updatedAt=nowStamp();save();openTaskEditor(t)}
 function v35DateReliabilityPanel(){const b=reviewPeriodBounds(),completed=completedInRange(b.start,b.end),rows=completed.map(t=>{const original=t.dateMode==='split'?(t.originalDueDate||t.originalPlannedDate):(t.originalDate||v35TaskOriginalDate(t)),final=v35DeadlineDate(t)||effectivePlanDate(t),done=t.completedAt?.slice(0,10)||null,moves=v35TaskMoveCount(t);let result='Completed';if(done&&final){const diff=dateDiff(final,done);result=diff<0?`${Math.abs(diff)} days early`:diff===0?'On final date':`${diff} days late`}return{t,original,final,done,moves,result}});const onOriginal=rows.filter(r=>r.original&&r.done===r.original).length,early=rows.filter(r=>r.done&&r.final&&r.done<r.final).length,replanned=rows.filter(r=>r.moves>0).length,late=rows.filter(r=>r.done&&r.final&&r.done>r.final).length;return `<section class="panel date-reliability-panel">${panelHead('Date Reliability','Original commitment, final date, completion date, and movement history.','clock_original')}<div class="review-summary"><div class="review-metric"><strong>${onOriginal}</strong><span>On original date</span></div><div class="review-metric"><strong>${early}</strong><span>Completed early</span></div><div class="review-metric"><strong>${replanned}</strong><span>After replanning</span></div><div class="review-metric"><strong>${late}</strong><span>Completed late</span></div></div><div class="date-reliability-list">${rows.slice(0,8).map(r=>`<div class="date-reliability-row"><div><strong>${esc(r.t.title)}</strong><small>Originally ${r.original?fmtDate(r.original):'not set'} · Final ${r.final?fmtDate(r.final):'not set'} · Completed ${r.done?fmtDate(r.done):'not recorded'}</small></div><span>${r.moves?`Moved ${r.moves}x · `:''}${esc(r.result)}</span></div>`).join('')||'<div class="empty compact">Complete tasks to build date reliability history.</div>'}</div></section>`}
 function renderReview(){renderReviewV34();const host=root.querySelector('.layout-2 > .stack')||root;host.insertAdjacentHTML('afterbegin',v35DateReliabilityPanel())}
-async function exportExcel(){try{if(!window.QuestlineExcel)throw new Error('Excel engine unavailable');const s=snapshot(),compat={version:3,appVersion:VERSION,schemaVersion:SCHEMA_VERSION,exportedAt:s.exportedAt,profile:s.profile,settings:s.settings,appmeta:{id:'appmeta',appVersion:VERSION,schemaVersion:SCHEMA_VERSION,hiddenCalendarEventIds:s.hiddenCalendarEventIds||[],topPriorityByDate:s.topPriorityByDate||{},quietAreas:s.quietAreas||{},recurringAchievements:s.recurringAchievements||{},updatedAt:nowStamp()},actions:s.tasks,campaigns:s.quests,habits:s.habits,captures:s.inbox,decisions:s.notes.filter(n=>n.type==='Decision'),events:s.calendarEvents,reviews:s.reviews,resources:s.notes,tombstones:s.tombstones,trash:[]};await window.QuestlineExcel.exportState(compat,`questline-v3.6-${todayISO()}.xlsx`);toast('Excel workbook exported','resources')}catch(e){toast(`Excel export failed: ${e.message}`,'risk_critical')}}
+async function exportExcel(){try{if(!window.QuestlineExcel)throw new Error('Excel engine unavailable');const s=snapshot(),compat={version:3,appVersion:VERSION,schemaVersion:SCHEMA_VERSION,exportedAt:s.exportedAt,profile:s.profile,settings:s.settings,appmeta:{id:'appmeta',appVersion:VERSION,schemaVersion:SCHEMA_VERSION,hiddenCalendarEventIds:s.hiddenCalendarEventIds||[],topPriorityByDate:s.topPriorityByDate||{},quietAreas:s.quietAreas||{},recurringAchievements:s.recurringAchievements||{},updatedAt:nowStamp()},actions:s.tasks,campaigns:s.quests,habits:s.habits,captures:s.inbox,decisions:s.notes.filter(n=>n.type==='Decision'),events:s.calendarEvents,reviews:s.reviews,resources:s.notes,tombstones:s.tombstones,trash:[]};await window.QuestlineExcel.exportState(compat,`questline-v3.7-${todayISO()}.xlsx`);toast('Excel workbook exported','resources')}catch(e){toast(`Excel export failed: ${e.message}`,'risk_critical')}}
 
 // Window-capture handlers run before legacy document handlers.
 window.addEventListener('click',e=>{
@@ -1653,6 +1656,139 @@ window.addEventListener('submit',e=>{
   if(form.matches('.inline-task-form')){e.preventDefault();e.stopImmediatePropagation();const title=String(new FormData(form).get('title')||'').trim(),q=questById(form.dataset.quest);if(!title||!q)return;const t=normalizeTask({id:uid('task'),title,area:q.area,secondaryAreas:q.secondaryAreas||[],questId:q.id,track:form.dataset.track||'outcome',workstreamId:form.dataset.workstream||null,progress:0,dateMode:'unified',date:null,importance:'Medium',urgency:'Medium',plannedOrder:questTasks(q.id).filter(x=>x.workstreamId===form.dataset.workstream).length+1,checklist:[],createdAt:nowStamp(),updatedAt:nowStamp()});state.tasks.push(t);if(!q.nextMoveTaskId)q.nextMoveTaskId=t.id;q.updatedAt=nowStamp();save();form.reset();toast('Task added','object_action');render();return}
   if(form.matches('.global-inline-task-form')){e.preventDefault();e.stopImmediatePropagation();const title=String(new FormData(form).get('title')||'').trim(),qid=form.dataset.quest||null,q=questById(qid);if(!title)return;const t=normalizeTask({id:uid('task'),title,area:q?.area||'Professional',secondaryAreas:q?.secondaryAreas||[],questId:qid,track:qid?(form.dataset.track||'outcome'):null,standaloneType:qid?'Resolve':(form.dataset.standalone||'Resolve'),workstreamId:qid?(form.dataset.workstream||q?.workstreams?.[0]?.id||null):null,progress:0,dateMode:'unified',date:null,importance:'Medium',urgency:'Medium',plannedOrder:activeTasks().length+1,checklist:[],createdAt:nowStamp(),updatedAt:nowStamp()});state.tasks.push(t);if(q&&!q.nextMoveTaskId)q.nextMoveTaskId=t.id;if(q)q.updatedAt=nowStamp();save();form.reset();toast('Task added','object_action');render();return}
   if(form.matches('.v36-entry-task-form')){e.preventDefault();e.stopImmediatePropagation();const title=String(new FormData(form).get('title')||'').trim();if(title){v36AddEntryTask(form.dataset.quest,form.dataset.entry,title)}return}
+},true);
+
+
+
+/* ==========================================================================
+   QUESTLINE 3.7 - VISUAL PRIORITY ASSETS, MULTI-STAR & HABIT PRIORITY DETAILS
+   ========================================================================== */
+const v37BaseNormalizeHabit = normalizeHabit;
+const v37BaseEnsureState = ensureState;
+const v37BaseOpenHabitEditor = openHabitEditor;
+const v37BaseSaveHabit = saveHabit;
+const v37BaseHabitUrgency = v35HabitUrgency;
+const v37BaseOpenTaskEditor = openTaskEditor;
+const v37BaseCompletedForDate = completedForDate;
+const v37BaseMoveHabitOccurrence = v35MoveHabitOccurrence;
+
+function v37RankKey(rank){return `rank_${Math.max(1,Math.min(10,Number(rank||1)))}`}
+function v37PriorityAsset(kind,level){return `${kind}_${Math.max(1,Math.min(3,Number(level||1)))}`}
+function v37RankLabel(rank){return rank>=10?'Critical Priority':rank===9?'Do First':rank===8?'Strong Priority':rank===7?'Next':rank===6?'Proceed':rank===5?'Steady':rank===4?'Normal':rank===3?'Low':rank===2?'Low Focus':'Not Assessed'}
+
+v33PrioritySelector=function(name,value,label){
+  const kind=name==='importance'?'importance':'urgency';
+  return `<fieldset class="priority-field visual-priority-field"><legend>${esc(label)}</legend><div class="priority-choice-group visual-priority-group">${['Low','Medium','High'].map((x,i)=>`<label class="priority-choice visual-priority-choice level-${i+1}"><input type="radio" name="${name}" value="${x}" ${value===x?'checked':''}><span><img src="${A[v37PriorityAsset(kind,i+1)]}" alt=""><strong>${esc(x)}</strong><small>${esc(label)} ${i+1}</small></span></label>`).join('')}</div></fieldset>`
+};
+function v37HabitUrgencySelector(value){
+  const options=[['','Auto','clock_current','Derived from the Habit cycle'],['Low','Low','urgency_1','Urgency 1'],['Medium','Medium','urgency_2','Urgency 2'],['High','High','urgency_3','Urgency 3']];
+  return `<fieldset class="priority-field visual-priority-field habit-urgency-field"><legend>Urgency</legend><div class="habit-urgency-options">${options.map(([v,label,asset,sub])=>`<label class="priority-choice visual-priority-choice ${v?`level-${URGENCY.indexOf(v)+1}`:'auto-level'}"><input type="radio" name="urgencyOverride" value="${v}" ${(value||'')===v?'checked':''}><span><img src="${A[asset]}" alt=""><strong>${label}</strong><small>${sub}</small></span></label>`).join('')}</div></fieldset>`
+}
+function v37HabitPriorityFields(h){
+  const derived=v37BaseHabitUrgency(h,todayISO()),effective=h.urgencyOverride||derived,rank=PRIORITY_RANK[`${h.importance||'Medium'}-${effective}`]||7;
+  return `<section class="habit-priority-details full"><div class="section-title"><div><strong>Priority</strong><small>Importance is stable. Urgency can stay automatic or be overridden.</small></div><span class="habit-rank-preview"><img src="${A[v37RankKey(rank)]}" alt="">R${rank}</span></div><div class="priority-editor-inline">${v33PrioritySelector('importance',h.importance||'Medium','Importance')}${v37HabitUrgencySelector(h.urgencyOverride||'')}</div><p class="field-help">Automatic urgency currently resolves to <b>${esc(derived)}</b> from period pace and remaining opportunities.</p></section>`
+}
+
+normalizeHabit=function(h,index=0){
+  const x=v37BaseNormalizeHabit(h,index);
+  x.urgencyOverride=URGENCY.includes(h?.urgencyOverride)?h.urgencyOverride:null;
+  return x
+};
+v35HabitUrgency=function(h,date=todayISO()){
+  return URGENCY.includes(h?.urgencyOverride)?h.urgencyOverride:v37BaseHabitUrgency(h,date)
+};
+
+function v37NormalizeStarMap(map){
+  const out={};
+  Object.entries(map||{}).forEach(([date,value])=>{
+    const list=Array.isArray(value)?value:(value?[value]:[]),clean=[...new Set(list.filter(Boolean))];
+    if(clean.length)out[date]=clean
+  });
+  return out
+}
+function v37StarredKeys(date){return Array.isArray(state.topPriorityByDate?.[date])?state.topPriorityByDate[date]:state.topPriorityByDate?.[date]?[state.topPriorityByDate[date]]:[]}
+function v37IsStarred(key,date){return !!key&&!!date&&v37StarredKeys(date).includes(key)}
+function v37SetStarredKeys(date,keys){const clean=[...new Set((keys||[]).filter(Boolean))];if(clean.length)state.topPriorityByDate[date]=clean;else delete state.topPriorityByDate[date]}
+function v37MoveStarKey(key,fromDate,toDate){
+  if(!key)return;
+  if(fromDate)v37SetStarredKeys(fromDate,v37StarredKeys(fromDate).filter(x=>x!==key));
+  if(toDate)v37SetStarredKeys(toDate,[...v37StarredKeys(toDate),key])
+}
+
+ensureState=function(){
+  v37BaseEnsureState();
+  state.topPriorityByDate=v37NormalizeStarMap(state.topPriorityByDate);
+  state.habits=(state.habits||[]).map(normalizeHabit);
+  // Preserve legacy per-task stars without restricting a date to one item.
+  state.tasks.forEach(t=>{const date=effectivePlanDate(t);if(t.topPriority&&date)v37SetStarredKeys(date,[...v37StarredKeys(date),`task:${t.id}`])});
+  state.appVersion=VERSION;state.schemaVersion=SCHEMA_VERSION
+};
+ensureState();ensureHabitPeriods();save();
+
+setTopPriority=function(key,date){
+  const list=v37StarredKeys(date),active=list.includes(key);
+  v37SetStarredKeys(date,active?list.filter(x=>x!==key):[...list,key]);
+  save();toast(active?'Removed from Starred':'Added to Starred',active?'priority_defer':'priority_act');render()
+};
+
+taskActivity=function(t){const date=effectivePlanDate(t),key=`task:${t.id}`;return{key,kind:'task',date,task:t,category:taskCategory(t),area:t.area,questId:t.questId,title:t.title,estimateMinutes:t.estimateMinutes||0,startTime:t.startTime||null,dueDate:v35DeadlineDate(t),topPriority:v37IsStarred(key,date)}};
+habitOccurrenceActivities=function(date){
+  const out=[];activeHabits().forEach(h=>{v33EnsureUpcomingHabitOccurrences(h,3);const p=periodProgress(h,date);(h.occurrences||[]).filter(o=>o.date===date).forEach(o=>{if(o.notRequiredAt&&!o.completedAt&&!o.skippedAt)return;if(p.met&&!o.completedAt&&!o.skippedAt&&!o.extra)return;const key=`habit:${h.id}:${o.id}`;out.push({key,kind:'habit',date,habit:h,occurrence:o,category:'Habit',area:h.area,questId:h.questId,title:h.title,estimateMinutes:h.estimateMinutes||0,startTime:null,dueDate:periodBounds(h,date).end,topPriority:v37IsStarred(key,date)})})});return out
+};
+completedForDate=function(date){return v37BaseCompletedForDate(date).map(a=>({...a,topPriority:v37IsStarred(a.key,date)}))};
+
+v35SetTaskDate=function(t,newDate,reason='Replanned'){
+  const old=effectivePlanDate(t),key=`task:${t.id}`,wasStarred=v37IsStarred(key,old);
+  if(t.dateMode==='split'){
+    if(!t.originalPlannedDate&&newDate)t.originalPlannedDate=old||newDate;
+    if(old!==newDate)t.plannedDateHistory=[...(t.plannedDateHistory||[]),{from:old,to:newDate,at:nowStamp(),reason}];
+    t.plannedDate=newDate
+  }else{
+    if(!t.originalDate&&newDate)t.originalDate=old||newDate;
+    if(old!==newDate)t.dateHistory=[...(t.dateHistory||[]),{from:old,to:newDate,at:nowStamp(),reason}];
+    t.date=newDate;t.plannedDate=newDate;t.dueDate=newDate
+  }
+  if(wasStarred)v37MoveStarKey(key,old,newDate);
+  t.updatedAt=nowStamp()
+};
+v35MoveHabitOccurrence=function(hid,oid,date,scope='one'){
+  const h=habitById(hid),o=h?.occurrences.find(x=>x.id===oid),old=o?.date,key=o?`habit:${hid}:${oid}`:null,starred=o&&v37IsStarred(key,old);
+  v37BaseMoveHabitOccurrence(hid,oid,date,scope);
+  if(starred){v37MoveStarKey(key,old,date);save();render()}
+};
+
+renderDueLens=function(){
+  const groups=['Overdue','Due today','Due tomorrow','Due this week','Later','No due date'],tasks=activeTasks().filter(t=>(state.ui.showCompletedToday||!isTaskComplete(t))&&(!state.ui.starredOnly||v37IsStarred(`task:${t.id}`,effectivePlanDate(t)))).sort((a,b)=>String(v35DeadlineDate(a)||'9999').localeCompare(String(v35DeadlineDate(b)||'9999')));
+  return `<div class="stack">${groups.map(g=>{const list=tasks.filter(t=>taskDueGroup(t)===g).map(taskActivity),open=list.filter(a=>!activityCompleted(a)),done=list.filter(activityCompleted);if(!list.length)return'';return `<section class="panel date-section ${g==='Overdue'?'overdue-section v35-overdue':''}"><div class="date-section-head"><div><span class="eyebrow ${g==='Overdue'?'danger-text':''}">DEADLINES</span><h2>${g}</h2><p>${open.length} open task${open.length===1?'':'s'} · schedule remains visible</p></div><span class="date-stats"><span>${open.length}</span></span></div><div class="activity-list">${sortActivities(open,todayISO()).map(a=>activityRow(a,{draggable:false})).join('')||'<div class="empty compact">No open tasks.</div>'}</div>${state.ui.showCompletedToday?completedGroup(g,done):''}</section>`}).join('')}</div>`
+};
+
+v35PriorityEditor=function(id){
+  const t=taskById(id);if(!t)return;const cells=[];
+  for(const imp of ['High','Medium','Low'])for(const urg of ['Low','Medium','High'])cells.push({imp,urg,rank:PRIORITY_RANK[`${imp}-${urg}`]});
+  showModal(`${modalHeader('Change Priority',t.title)}<div class="modal-body priority-editor"><p>Tap an emblem. Rank updates immediately and controls the daily queue.</p><div class="priority-mini-grid visual-rank-grid">${cells.map(c=>`<button class="${t.importance===c.imp&&t.urgency===c.urg?'active':''}" data-v35-priority-cell="${t.id}:${c.imp}:${c.urg}"><img src="${A[v37RankKey(c.rank)]}" alt=""><b>R${c.rank}</b><span>I${v35ImportanceNumber(c.imp)} · U${v35UrgencyNumber(c.urg)}</span></button>`).join('')}</div></div><footer class="modal-actions compact-footer"><div><span>Higher rank appears first</span></div><div><button class="button ghost" data-close-modal>Close</button></div></footer>`)
+};
+
+openTaskEditor=function(existing=null,defaults={}){
+  v37BaseOpenTaskEditor(existing,defaults);
+  if(existing)setTimeout(()=>{const form=$('#v35-task-editor'),btn=form?.querySelector('[data-top-priority]'),t=taskById(existing.id||existing);if(btn&&t){const date=effectivePlanDate(t),active=v37IsStarred(`task:${t.id}`,date);btn.classList.toggle('active',active);btn.innerHTML=active?'&#9733;':'&#9734;';btn.setAttribute('aria-label',active?'Remove star':'Star task')}},0)
+};
+
+openHabitEditor=function(existing=null,defaults={}){
+  v37BaseOpenHabitEditor(existing,defaults);
+  const form=$('#habit-form');if(!form)return;
+  const h=normalizeHabit(existing||{id:form.dataset.id,title:defaults.title||'',area:defaults.area||'Health',importance:'Medium'}),details=form.querySelector('.details-grid');
+  if(details&&!details.querySelector('.habit-priority-details'))details.insertAdjacentHTML('afterbegin',v37HabitPriorityFields(h))
+};
+saveHabit=function(form){
+  const id=form.dataset.id,importance=form.querySelector('[name="importance"]:checked')?.value||habitById(id)?.importance||'Medium',urgencyOverride=form.querySelector('[name="urgencyOverride"]:checked')?.value||null;
+  v37BaseSaveHabit(form);const h=habitById(id);if(h){h.importance=IMPORTANCE.includes(importance)?importance:'Medium';h.urgencyOverride=URGENCY.includes(urgencyOverride)?urgencyOverride:null;h.updatedAt=nowStamp();save();render()}
+};
+
+window.addEventListener('change',e=>{
+  const form=e.target.closest('#habit-form');if(form&&(e.target.name==='importance'||e.target.name==='urgencyOverride')){
+    const h=habitById(form.dataset.id)||normalizeHabit({id:form.dataset.id,title:form.querySelector('[name="title"]')?.value||'',importance:'Medium'}),importance=form.querySelector('[name="importance"]:checked')?.value||'Medium',override=form.querySelector('[name="urgencyOverride"]:checked')?.value||null,urgency=override||v37BaseHabitUrgency(h,todayISO()),rank=PRIORITY_RANK[`${importance}-${urgency}`]||7,preview=form.querySelector('.habit-rank-preview');
+    if(preview)preview.innerHTML=`<img src="${A[v37RankKey(rank)]}" alt="">R${rank}`
+  }
 },true);
 
 window.QuestlineV3={version:VERSION,schemaVersion:SCHEMA_VERSION,storageKey:STORAGE_KEY,getState:()=>clone(state),reset:()=>{state=defaultState();ensureState();ensureHabitPeriods();save();render()},applySnapshot,parseICS,assets:A};

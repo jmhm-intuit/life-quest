@@ -1,0 +1,179 @@
+{
+  "version": "3.7.0",
+  "schemaVersion": 19,
+  "generatedAt": "2026-08-18T04:47:30.367917+00:00",
+  "passed": 34,
+  "total": 34,
+  "checks": [
+    {
+      "name": "320px runtime has no errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "320px has no horizontal overflow",
+      "passed": true,
+      "detail": "overflow=0"
+    },
+    {
+      "name": "320px reports v3.7.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "360px runtime has no errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "360px has no horizontal overflow",
+      "passed": true,
+      "detail": "overflow=0"
+    },
+    {
+      "name": "360px reports v3.7.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "390px runtime has no errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "390px has no horizontal overflow",
+      "passed": true,
+      "detail": "overflow=0"
+    },
+    {
+      "name": "390px reports v3.7.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "430px runtime has no errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "430px has no horizontal overflow",
+      "passed": true,
+      "detail": "overflow=0"
+    },
+    {
+      "name": "430px reports v3.7.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "768px runtime has no errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "768px has no horizontal overflow",
+      "passed": true,
+      "detail": "overflow=0"
+    },
+    {
+      "name": "768px reports v3.7.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px runtime has no errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1440px has no horizontal overflow",
+      "passed": true,
+      "detail": "overflow=0"
+    },
+    {
+      "name": "1440px reports v3.7.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy/default star map is an array",
+      "passed": true,
+      "detail": "['task:t-role-profile']"
+    },
+    {
+      "name": "A second Task can be Starred on the same date",
+      "passed": true,
+      "detail": "['task:t-role-profile', 'task:t-dentist']"
+    },
+    {
+      "name": "Both same-date stars render active",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Starred filter keeps all Starred Tasks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Removing one star preserves the other",
+      "passed": true,
+      "detail": "['task:t-dentist']"
+    },
+    {
+      "name": "Multiple-star interactions have no runtime errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Habit More details contains Importance controls",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Habit More details contains Auto plus three Urgency choices",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Habit priority artwork loads",
+      "passed": true,
+      "detail": "8 images"
+    },
+    {
+      "name": "Habit Rank preview updates to R10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Habit priority settings persist",
+      "passed": true,
+      "detail": "['High', 'High']"
+    },
+    {
+      "name": "Habit priority interactions have no runtime errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Visual Rank editor contains all 9 combinations",
+      "passed": true,
+      "detail": "count=9"
+    },
+    {
+      "name": "Rank artwork loads in the editor",
+      "passed": true,
+      "detail": "9 images"
+    },
+    {
+      "name": "Tapping a Rank emblem updates Importance/Urgency",
+      "passed": true,
+      "detail": "['Medium', 'Low']"
+    },
+    {
+      "name": "Rank editor interactions have no runtime errors",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

@@ -1,23 +1,7 @@
-# Deploy Questline 3.6
+# Deploy Questline 3.7
 
 Repository: `jmhm-intuit/life-quest`
 
-After placing `life-quest-v3.6-deploy.zip` in the cloned repository root, run:
+Upload `life-quest-v3.7-deploy.zip` to the repository root, then run the deployment commands provided with the release. The included `deploy.sh` validates the archive, replaces the static site while preserving `.git`, commits `Deploy Questline v3.7.0`, and pushes `main`.
 
-```bash
-cd life-quest
-
-git pull --rebase origin main
-
-unzip -p life-quest-v3.6-deploy.zip deploy.sh \
-  > /tmp/deploy-life-quest-v3.6.sh
-
-chmod +x /tmp/deploy-life-quest-v3.6.sh
-
-/tmp/deploy-life-quest-v3.6.sh \
-  life-quest-v3.6-deploy.zip
-```
-
-GitHub Actions will publish:
-
-`https://jmhm-intuit.github.io/life-quest/`
+Public URL: https://jmhm-intuit.github.io/life-quest/
