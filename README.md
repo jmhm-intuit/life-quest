@@ -1,20 +1,18 @@
-# Questline 3.7
+# Questline 3.8
 
-Mobile-first local PWA for planning Tasks, Projects, Explorations, Habits, and Reviews.
+Questline is a local-first, mobile-first planner for Projects, Explorations, Tasks, Habits, and reflective life-area review.
 
-## Release metadata
+- Version: `3.8.0`
+- Schema: `20`
+- Storage key: `questline-v3-8`
+- Deployment: static GitHub Pages PWA
+- Personal records: stored in the browser; manual JSON/Excel backup remains available
 
-- Version: `3.7.0`
-- Schema: `19`
-- Storage key: `questline-v3-7`
-- Public site: `https://jmhm-intuit.github.io/life-quest/`
+## Version 3.8 focus
 
-## Highlights
-
-- Approved visual assets for Importance 1–3, Urgency 1–3, and Rank R10–R1
-- Multiple Starred Tasks or Habit Activities on the same date
-- Habit Importance and optional Urgency override under **More details**
-- Automatic Habit urgency remains the default
-- Existing Version 3.6 features and local data migration retained
-
-Run locally with `python run_local.py`.
+- Flexible Habit-cycle reconciliation rather than rigid planned occurrences
+- Retroactive Habit completion, skipping, replanning, and occurrence deduplication
+- Actionable Exploration threads with linked Tasks and a visible Next Move
+- Life-area Review with non-obvious insights and rank-aware progress recognition
+- Consistent compact Rank placement and rank-first ordering
+- Preservation of all approved Questline artwork and visual assets

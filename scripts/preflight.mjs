@@ -18,13 +18,13 @@ for (const rel of required) fs.existsSync(path.join(root, rel)) ? pass(rel) : fa
 let version;
 try {
   version = JSON.parse(fs.readFileSync(path.join(root, 'version.json'), 'utf8'));
-  version.version === '3.7.0' ? pass('version 3.7.0') : fail(`version.json version is ${version.version}`);
-  Number(version.schemaVersion) === 19 ? pass('schema 19') : fail(`schema is ${version.schemaVersion}`);
-  version.storageKey === 'questline-v3-7' ? pass('storage key questline-v3-7') : fail(`storage key is ${version.storageKey}`);
+  version.version === '3.8.0' ? pass('version 3.8.0') : fail(`version.json version is ${version.version}`);
+  Number(version.schemaVersion) === 20 ? pass('schema 20') : fail(`schema is ${version.schemaVersion}`);
+  version.storageKey === 'questline-v3-8' ? pass('storage key questline-v3-8') : fail(`storage key is ${version.storageKey}`);
 } catch (error) { fail(`invalid version.json: ${error.message}`); }
 try {
   const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
-  String(manifest.name || '').includes('3.7') ? pass('manifest version label') : fail('manifest name does not include 3.7');
+  String(manifest.name || '').includes('3.8') ? pass('manifest version label') : fail('manifest name does not include 3.8');
   pass('manifest JSON');
 } catch (error) { fail(`invalid manifest: ${error.message}`); }
 try {
@@ -36,12 +36,16 @@ try {
   pass('asset manifest JSON');
 } catch (error) { fail(`invalid asset manifest: ${error.message}`); }
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-for (const marker of ['Questline v3.7.0','app.css','app.js','manifest.webmanifest']) index.includes(marker) ? pass(`index includes ${marker}`) : fail(`index missing ${marker}`);
+for (const marker of ['Questline v3.8.0','app.css','app.js','manifest.webmanifest']) index.includes(marker) ? pass(`index includes ${marker}`) : fail(`index missing ${marker}`);
 const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
-for (const marker of ["const VERSION = '3.7.0'", 'const SCHEMA_VERSION = 19', "const STORAGE_KEY = 'questline-v3-7'", 'v37NormalizeStarMap', 'urgencyOverride', 'importance_1', 'rank_10']) app.includes(marker) ? pass(`app includes ${marker}`) : fail(`app missing ${marker}`);
+for (const marker of [
+  "const VERSION = '3.8.0'", 'const SCHEMA_VERSION = 20', "const STORAGE_KEY = 'questline-v3-8'",
+  "'questline-v3-7'", 'v38DedupeHabitOccurrences', 'v38WeekStrip', 'v38RecordHabitCompletion',
+  'v38InvestigationThread', 'Insights you may not see in Today', 'v38-rank-dock'
+]) app.includes(marker) ? pass(`app includes ${marker}`) : fail(`app missing ${marker}`);
 try {
   const sw = fs.readFileSync(path.join(root, 'service-worker.js'), 'utf8');
-  sw.includes('questline-v3-7-cache-v1') ? pass('service-worker cache key') : fail('service-worker cache key is not v3.7');
+  sw.includes('questline-v3-8-cache-v1') ? pass('service-worker cache key') : fail('service-worker cache key is not v3.8');
   const prefix = sw.split("self.addEventListener('install'")[0];
   const core = vm.runInNewContext(`${prefix}; CORE`);
   let missing = 0;
@@ -53,4 +57,4 @@ try {
   if (!missing) pass(`${core.length} service-worker references`);
 } catch (error) { fail(`service worker preflight failed: ${error.message}`); }
 if (process.exitCode) process.exit(process.exitCode);
-console.log('Questline 3.7 preflight complete.');
+console.log('Questline 3.8 preflight complete.');

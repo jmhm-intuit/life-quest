@@ -1,13 +1,21 @@
-# Questline 3.7 Mobile Usage
+# Questline 3.8 Mobile Usage
 
-## Star several Activities
+## Reconcile a frequent Habit
 
-Tap the star on any Task or Habit Activity. More than one item can remain Starred on the same date. Use the Starred filter in Today to see only those items.
+1. Open **Questbook → Habits**.
+2. Tap **Review cycle**.
+3. Tap a day in the week strip to correct its result, or choose **Record completion** to select the actual date.
+4. Use **Plan remaining** when the period target still needs another opportunity.
+5. Moving an occurrence returns to the same Habit review.
 
-## Change Task priority
+## Advance an Exploration
 
-Open a Task or tap its Rank badge, then choose the visual Importance and Urgency emblems. Rank updates automatically.
+1. Open **Questbook → Explorations**.
+2. Open an Exploration.
+3. Use the visible **Next Move**, or add a Question, Experiment, or Option.
+4. Add concrete Tasks directly inside the investigation thread.
+5. Plan those Tasks in Today and return to the source Exploration through the parent link.
 
-## Change Habit priority
+## Read Review insights
 
-Open the Habit, expand **More details**, then choose Importance. Leave Urgency on **Auto** to use period pace, or select Low, Medium, or High as an explicit override.
+Open **Review → Areas** to see Strong Momentum, Needs Proactive Focus, all life areas, and patterns that are difficult to notice in Today.

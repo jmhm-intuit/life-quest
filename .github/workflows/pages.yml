@@ -1,4 +1,4 @@
-name: Deploy Questline 3.7 to GitHub Pages
+name: Deploy Questline 3.8 to GitHub Pages
 
 on:
   push:

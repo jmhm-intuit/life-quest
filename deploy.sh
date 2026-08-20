@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 set -eu
 
-ZIP_FILE=${1:-life-quest-v3.7-deploy.zip}
-TMP_DIR="/tmp/life-quest-v3.7-$$"
+ZIP_FILE=${1:-life-quest-v3.8-deploy.zip}
+TMP_DIR="/tmp/life-quest-v3.8-$$"
 
 cleanup() {
   rm -rf "$TMP_DIR"
@@ -66,7 +66,7 @@ git add -A
 if git diff --cached --quiet; then
   echo "No new changes to commit."
 else
-  git commit -m "Deploy Questline v3.7.0"
+  git commit -m "Deploy Questline v3.8.0"
 fi
 
 git push origin main

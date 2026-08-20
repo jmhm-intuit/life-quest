@@ -1,8 +1,9 @@
-# Questline 3.7 Product Model
+# Questline 3.8 Product Model
 
-- Importance and Urgency remain the source attributes.
-- Rank R10–R1 is derived from their combination.
-- Multiple items may be Starred on the same date.
-- Starred is a user-curated filter and emphasis, not a replacement for Rank.
-- Habit Importance is user-controlled.
-- Habit Urgency is derived from period pace unless the user explicitly selects an override under More details.
+- **Project:** a defined outcome decomposed into milestones, workstreams, Tasks, and supporting Habits.
+- **Exploration:** uncertainty decomposed into Questions, Experiments, Options, Evidence, Decisions, and linked Tasks.
+- **Task:** a concrete, schedulable action.
+- **Habit:** a recurring period target supported by flexible planned opportunities and actual outcomes.
+- **Activity:** a planner representation in Today; not a separate user-managed record.
+
+Habit success is determined by the period target. Planned occurrences are flexible opportunities, not rigid Tasks. Exploration movement occurs through concrete linked Tasks plus evidence and decisions. Review interprets this movement across life areas.
