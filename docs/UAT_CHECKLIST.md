@@ -1,27 +1,28 @@
-# Questline 3.8 User Acceptance Checklist
+# Questline 3.9 User-Acceptance Checklist
 
-## Habits
+## Habit rhythm
 
-- [ ] Record two completions on dates that differ from the original planned opportunities.
-- [ ] Skip an occurrence and confirm the target remains unchanged.
-- [ ] Move an occurrence and confirm Habit Review remains open.
-- [ ] Confirm the period total, health, Today, and Review update together.
-- [ ] Confirm a monthly Habit does not show duplicate generated opportunities.
-
-## Explorations
-
-- [ ] Open an Exploration and identify the Next Move immediately.
-- [ ] Add multiple Tasks under a Question or Option.
-- [ ] Plan an Exploration Task and open its source from Today.
+- [ ] Record two completions retrospectively in the current weekly cycle.
+- [ ] Skip one planned opportunity.
+- [ ] Plan a remaining occurrence without leaving the Habit workspace.
+- [ ] Use multi-select to reconcile several days.
+- [ ] Verify Today updates after Habit reconciliation.
+- [ ] Verify a fixed monthly date generates future occurrences.
+- [ ] Verify an ordinal weekday such as second Monday generates correctly.
+- [ ] Verify numeric Habit progress can be corrected.
 
 ## Review
 
-- [ ] Review opens on Areas.
-- [ ] Strong Momentum and Needs Proactive Focus are understandable.
-- [ ] Cross-area insights reflect actual priority and replanning evidence.
+- [ ] Open Review and confirm Areas is the default.
+- [ ] Confirm Big Moves appear before Small Wins.
+- [ ] Compare this period with the previous period.
+- [ ] Confirm delayed work recovery is recognized.
+- [ ] Confirm dormant life-area explanations link to underlying evidence.
+- [ ] Mark an area Quiet by Choice and verify it remains understandable.
 
-## Mobile
+## Mobile and data
 
-- [ ] No horizontal scrolling at the phone width.
-- [ ] Rank stays in the same location on each Task card.
-- [ ] Bottom sheets clear the home indicator and bottom navigation.
+- [ ] Verify there is no horizontal page scrolling.
+- [ ] Verify area icon selectors are readable and tappable.
+- [ ] Export JSON and Excel, then import them into a clean browser profile.
+- [ ] Relaunch offline after installing the PWA.

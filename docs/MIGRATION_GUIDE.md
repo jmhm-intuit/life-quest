@@ -1,18 +1,17 @@
-# Migration to Questline 3.8
+# Questline 3.9 Migration Guide
 
-Questline 3.8 uses schema 20 and storage key `questline-v3-8`.
+Before extended testing, export a JSON or Excel backup from the prior Questline release.
 
-On first launch, Questline checks Version 3.7 and earlier storage keys, copies the newest compatible dataset, normalizes it, and keeps the earlier browser record as a migration source. Export JSON or Excel before extended use on a new release.
+Questline 3.9 reads earlier Questline browser keys, including `questline-v3-8`. The migration preserves Tasks, Projects, Explorations, Habits, Reviews, dates, progress, relationships, and history.
 
-## Habit occurrence cleanup
+## Habit migration
 
-Version 3.8 consolidates accidental generated duplicates that share the same Habit, period, and planned date. Completed takes precedence over Skipped; Skipped takes precedence over Planned. Explicit user-created extra completions remain separate.
+- Existing Habit occurrences retain planned, original, completion, skip, and movement data.
+- Generated occurrences receive stable recurrence metadata.
+- Accidental duplicates are consolidated by the existing occurrence-deduplication rules.
+- Completed and skipped records are preserved ahead of unused planned records.
+- Monthly Habits without an explicit recurrence mode default to a fixed day.
 
-The migration preserves:
+## Storage
 
-- Tasks, Projects, Explorations, Habits, Notes, and Reviews
-- Planned and original dates
-- Priority and Star selections
-- Habit completion and skip history
-- Workstreams and source-entry links
-- Primary and optional secondary life areas
+The new browser key is `questline-v3-9`. Earlier keys are not deleted automatically, providing an additional rollback path.

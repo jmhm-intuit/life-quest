@@ -1,7 +1,7 @@
 {
-  "name": "Questline 3.8",
+  "name": "Questline 3.9",
   "short_name": "Questline",
-  "description": "A local-first mobile planner with flexible Habit-cycle reconciliation, actionable Exploration, life-area insights, and a rank-aware daily queue.",
+  "description": "A local-first mobile planner with flexible Habit rhythm planning, motivational life-area Review, actionable Exploration, and a rank-aware daily queue.",
   "start_url": "./index.html?view=today",
   "scope": "./",
   "display": "standalone",

@@ -1,67 +1,115 @@
-# Questline 3.8 Validation
+# Questline 3.9 Validation
 
-Validated on 2026-08-20.
+## Release identity
 
-## Release metadata
+- Application: Questline `3.9.0`
+- Data schema: `21`
+- Storage key: `questline-v3-9`
 
-- Version: `3.8.0`
-- Schema: `20`
-- Storage key: `questline-v3-8`
-- Legacy migration includes `questline-v3-7`
+## Static validation
 
-## Static and packaging validation
+The release passed:
 
-- [x] JavaScript syntax passes `node --check app.js`.
-- [x] Package preflight passes.
-- [x] All 159 service-worker references exist.
-- [x] Version, manifest, storage key, workflow, vendor files, and approved priority assets are present.
-- [x] All 25 feature smoke markers pass.
-- [x] Manifest and version JSON parse successfully.
+- JavaScript syntax validation with `node --check app.js`
+- Package preflight
+- Manifest and version validation
+- Asset-manifest integrity checks
+- Service-worker cache-reference checks
+- 34 of 34 feature smoke checks
 
-## Responsive browser validation
+The service worker references 213 local resources, all present and non-empty where content is expected.
 
-The embedded standalone build was rendered through Chromium DevTools Protocol at:
+## Browser validation
 
-- [x] 320 px
-- [x] 360 px
-- [x] 390 px
-- [x] 430 px
-- [x] 768 px
-- [x] 1,440 px
+The standalone production bundle was rendered in headless Chromium at:
 
-At every width:
+- 320 × 844
+- 360 × 844
+- 390 × 844
+- 430 × 844
+- 768 × 1000
+- 1,440 × 1,000
 
-- Version reported `3.8.0`.
-- Schema reported `20`.
-- No document-level horizontal overflow was observed.
-- No runtime exception or browser error was observed during the tested render.
+Result: **108 of 108 checks passed**.
 
-Machine-readable results are in `qa/validation-results.json`.
+Each width validated:
 
-## Interaction checks
+- Questline 3.9 title and version metadata
+- No document-level horizontal overflow on Today
+- No broken visible images on Today
+- Life-area Review opens by default
+- Review recognition metrics render
+- No horizontal overflow in Review
+- Recognition and Realm images load
+- Habit workspace exposes Review, Plan, and numeric-progress actions
+- At least three future Habit opportunities render
+- High-frequency Habit cycle review opens
+- Seven-day reconciliation strip renders
+- Habit modal has no document-level horizontal overflow
+- Monthly fixed-day, ordinal-weekday, and manual recurrence controls render
+- Monthly planning view renders upcoming opportunities
+- Compact eight-choice life-area selector appears in Task details
+- No JavaScript runtime or console errors
 
-- [x] Capture text carries into the New Task title.
-- [x] Habit Review opens from the Habit card.
-- [x] A planned Habit day opens direct result controls.
-- [x] Moving a Habit occurrence returns to the same Habit Review instead of the main Habit list.
-- [x] Habit period totals and visible planned opportunities refresh after movement.
-- [x] Exploration opens with a visible Next Move.
-- [x] Questions and Options render as compact investigation threads with inline Task entry.
-- [x] Review opens by life area.
-- [x] Cross-cutting insight cards render above Strong Momentum and Needs Proactive Focus.
-- [x] Rank appears in a fixed location on Activity rows.
-- [x] Priority ordering uses Rank before Star as a tie-breaker.
+## Functional scenarios exercised
 
-## Habit reconciliation coverage
+- Open Review and display weekly positive-recognition summary
+- Open Habit workspace and inspect frequency-sensitive actions
+- Open weekly Habit reconciliation
+- Display current-cycle completion, skip, remaining-target, and planned-opportunity counts
+- Display monthly recurrence options
+- Open Task details and verify icon-based life-area selection
 
-- [x] Generated occurrences are normalized with stable IDs, period keys, sequence numbers, and original dates.
-- [x] Duplicate non-extra occurrences sharing Habit, period, and date are consolidated.
-- [x] Completed takes precedence over Skipped; Skipped takes precedence over Planned.
-- [x] Explicit extra completions are preserved.
-- [x] Retroactive completion dates are supported.
-- [x] High-frequency, low-frequency, and numeric Habit reviews use different interaction patterns.
-- [x] At least three upcoming opportunities are surfaced when available.
+## Packaging checks
 
-## Known device gate
+Before release, the following are also validated:
 
-Physical-device acceptance is still required for Android/iPhone date pickers, installed-PWA cache refresh, long-session local storage, and mobile file import/export.
+- Deployment ZIP contains files at archive root
+- PWA ZIP integrity
+- Standalone HTML generation
+- GitHub Pages workflow is present
+- Deployment script validates the archive before replacing repository content
+
+## Remaining acceptance work
+
+Physical-device testing is still recommended for:
+
+- Installed PWA update behavior
+- Mobile browser date pickers
+- File import and export pickers
+- Long-running browser storage
+- Real-device safe-area behavior
+- Habit reconciliation with a real personal portfolio
+
+## Deployment-script validation
+
+The standalone deployment script was executed against a temporary Git repository with a temporary `origin/main`. It successfully:
+
+- fetched and rebased `main`
+- validated and extracted the deployment archive
+- ran JavaScript, preflight, and smoke checks
+- preserved `.git`
+- replaced the application files
+- committed `Deploy Questline v3.9.0`
+- pushed the new commit to the temporary remote
+
+## Final regression validation
+
+After the release candidate was assembled, a second production-bundle regression pass executed the standalone bundle in headless Chromium through the DevTools protocol. **21 of 21 checks passed**, including:
+
+- Version and schema metadata
+- No horizontal overflow at a 390-pixel mobile viewport
+- Positive-behavior asset registration
+- High-frequency Habit cycle opening without runtime exceptions
+- Seven-day reconciliation strip
+- Review and Plan tabs in the same Habit workspace
+- At least three upcoming opportunities
+- Life-area Review as the default Review view
+- Recognition hero, pace metrics, and all life-area evidence cards
+- Actionable Exploration and visible Next Move
+- Capture text preservation into Task creation
+- Eight-choice visual life-area selector
+- Primary and shared-area selection persistence
+- No JavaScript runtime exceptions
+
+This regression pass also verified the defensive date handling used by Habit-cycle views so malformed or legacy date values cannot crash the workspace.

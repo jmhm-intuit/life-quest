@@ -1,9 +1,23 @@
-# Questline 3.8 Product Model
+# Questline 3.9 Product Model
 
-- **Project:** a defined outcome decomposed into milestones, workstreams, Tasks, and supporting Habits.
-- **Exploration:** uncertainty decomposed into Questions, Experiments, Options, Evidence, Decisions, and linked Tasks.
-- **Task:** a concrete, schedulable action.
-- **Habit:** a recurring period target supported by flexible planned opportunities and actual outcomes.
-- **Activity:** a planner representation in Today; not a separate user-managed record.
+## Core records
 
-Habit success is determined by the period target. Planned occurrences are flexible opportunities, not rigid Tasks. Exploration movement occurs through concrete linked Tasks plus evidence and decisions. Review interprets this movement across life areas.
+- **Project:** a defined outcome broken into milestones, workstreams, and Tasks.
+- **Exploration:** an uncertain question broken into investigation threads and Tasks.
+- **Task:** one concrete action that can be planned, progressed, completed, or replanned.
+- **Habit:** a recurring period target supported by flexible planned opportunities.
+
+## Habit model
+
+A Habit has four distinct layers:
+
+1. Definition
+2. Period target
+3. Planned opportunities
+4. Actual outcomes
+
+Cycle achievement is determined by actual results inside the period, not rigid adherence to original dates.
+
+## Review model
+
+Review recognizes meaningful movement before raw volume. Life-area evidence combines important Tasks, Project and Exploration progress, Habit results, recovery, and inactivity. Primary areas own progress; optional secondary areas receive shared contribution without duplicating global totals.

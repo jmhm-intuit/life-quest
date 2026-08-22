@@ -1,21 +1,21 @@
-# Questline 3.8 Mobile Usage
+# Questline 3.9 Mobile Usage
 
-## Reconcile a frequent Habit
+## Habit review
 
-1. Open **Questbook → Habits**.
-2. Tap **Review cycle**.
-3. Tap a day in the week strip to correct its result, or choose **Record completion** to select the actual date.
-4. Use **Plan remaining** when the period target still needs another opportunity.
-5. Moving an occurrence returns to the same Habit review.
+Open Questbook → Habits. High-frequency Habits emphasize **Review cycle**, while monthly and lower-frequency Habits emphasize **Plan next**.
 
-## Advance an Exploration
+In Review:
 
-1. Open **Questbook → Explorations**.
-2. Open an Exploration.
-3. Use the visible **Next Move**, or add a Question, Experiment, or Option.
-4. Add concrete Tasks directly inside the investigation thread.
-5. Plan those Tasks in Today and return to the source Exploration through the parent link.
+- Tap a day to record completion, skip, plan, or clear a result.
+- Use **Select multiple** to reconcile several days together.
+- Use **Plan remaining** to add future opportunities.
+- Use the Previous and Next controls to move between cycles.
 
-## Read Review insights
+In Plan:
 
-Open **Review → Areas** to see Strong Momentum, Needs Proactive Focus, all life areas, and patterns that are difficult to notice in Today.
+- Adjust current and future occurrence dates.
+- Choose a weekly pattern, fixed monthly day, ordinal weekday, or manual cycle planning.
+
+## Review
+
+Review opens with Areas. Use **This Week** or **This Month**, then switch among Areas, Progress, History, and Victories.

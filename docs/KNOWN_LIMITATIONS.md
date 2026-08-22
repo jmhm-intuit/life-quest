@@ -1,8 +1,7 @@
-# Questline 3.8 Known Limitations
+# Questline 3.9 Known Limitations
 
-- Browser-local data does not automatically synchronize across devices.
-- Calendar imports remain read-only snapshots.
-- Habit schedule correction supports day, week, and month periods; more complex custom recurrence rules are deferred.
-- Exploration decision-readiness remains heuristic rather than a formal scoring system.
-- Duplicate Task marking preserves the duplicate as an inactive record but does not merge unique fields automatically.
-- Actual elapsed time is not tracked; Review uses Attention Footprint and estimated effort when available.
+- All personal records remain local to the current browser profile until manually exported or synchronized.
+- Google and Outlook calendar snapshots are read-only; Questline does not edit the source calendar.
+- Attention Footprint uses recorded activity and optional estimates, not automatic time tracking.
+- Monthly recurrence supports fixed day, ordinal weekday, and manual-cycle planning; more complex business-day rules are not included yet.
+- Full physical-device acceptance is still recommended for mobile installation, local file pickers, storage persistence, and long-running use.

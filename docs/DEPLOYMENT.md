@@ -1,9 +1,21 @@
-# Questline 3.8 Deployment
+# Questline 3.9 Deployment
 
-Repository: `https://github.com/jmhm-intuit/life-quest`
+## GitHub Pages
 
-GitHub Pages URL: `https://jmhm-intuit.github.io/life-quest/`
+The package contains `.github/workflows/pages.yml`. GitHub Pages should use **GitHub Actions** as its source.
 
-Upload `life-quest-v3.8-deploy.zip` to the repository root, then execute the supplied deployment script. GitHub Pages is deployed through `.github/workflows/pages.yml` after the push to `main`.
+Repository: `jmhm-intuit/life-quest`
 
-The repository contains only the static app. Personal Questline data remains in the browser unless explicitly exported.
+Public URL: https://jmhm-intuit.github.io/life-quest/
+
+Upload the deploy ZIP to the repository root, then run the included deployment script. After pushing, confirm the **Deploy Questline 3.9 to GitHub Pages** workflow completes successfully.
+
+## Local testing
+
+Run:
+
+```bash
+python run_local.py
+```
+
+Then open the displayed local URL. A phone on the same Wi-Fi can use the printed network address.

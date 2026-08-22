@@ -1,0 +1,112 @@
+{
+  "passed": 21,
+  "total": 21,
+  "results": [
+    {
+      "name": "Version 3.9.0",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Schema 21",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No horizontal overflow",
+      "pass": true,
+      "detail": "390:390"
+    },
+    {
+      "name": "Positive behavior assets loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Habit cycle opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Weekly reconciliation strip",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Review and Plan tabs coexist",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Habit Plan view opens",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "At least three upcoming opportunities",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Review opens by Areas",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Weekly recognition hero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Life-area evidence cards",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Pace comparison metrics",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Actionable Exploration screen",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Exploration Next Move visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Investigation threads create Tasks",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Capture title preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Visual life-area selector",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "First area becomes primary",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Second area stored as shared",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No runtime exceptions",
+      "pass": true,
+      "detail": "0"
+    }
+  ],
+  "exceptions": []
+}

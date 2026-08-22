@@ -1,34 +1,45 @@
 import fs from 'node:fs';
 import path from 'node:path';
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'app.css'), 'utf8');
 const checks = [
-  ['Version constant', "const VERSION = '3.8.0'"],
-  ['Schema constant', 'const SCHEMA_VERSION = 20'],
-  ['Legacy 3.7 migration key', "'questline-v3-7'"],
+  ['Version constant', "const VERSION = '3.9.0'"],
+  ['Schema constant', 'const SCHEMA_VERSION = 21'],
+  ['Legacy 3.8 migration key', "'questline-v3-8'"],
+  ['Stable Habit occurrence generation', 'v39OccurrenceId'],
   ['Habit occurrence deduplication', 'v38DedupeHabitOccurrences'],
-  ['Habit actual-date capture', 'v38RecordHabitCompletion'],
-  ['Weekly Habit strip', 'habit-week-strip'],
-  ['Low-frequency Habit reconciliation', 'v38LowFrequencyHabitReview'],
-  ['Numeric Habit reconciliation', 'v38NumericHabitReview'],
-  ['Habit move retains context', "habitReturnMode==='review'"],
-  ['Upcoming Habit opportunities', 'v38UpcomingHabitList'],
-  ['Actionable Exploration threads', 'v38InvestigationThread'],
-  ['Exploration Next Move', 'No next Task defined'],
-  ['Inline Exploration task capture', 'Add a concrete Task'],
-  ['Life-area insight panel', 'Insights you may not see in Today'],
-  ['Priority alignment insight', 'Priority alignment'],
-  ['Fixed Rank dock', 'v38-rank-dock'],
-  ['Rank-first sorting', 'v35ActivityRank(b,date)-v35ActivityRank(a,date)'],
-  ['Resolve lane rank sorting', 'Tasks are ordered by Priority Rank'],
-  ['Visual Importance assets', 'importance_1'],
-  ['Visual Urgency assets', 'urgency_3'],
-  ['Visual Rank assets', 'rank_10'],
-  ['Multiple stars retained', 'v37NormalizeStarMap'],
-  ['Unified date retained', "dateMode:'unified'"],
+  ['Habit cycle review', 'v39OpenHabitCycle'],
+  ['High-frequency weekly strip', 'v39WeekStrip'],
+  ['Retroactive Habit completion', 'data-v39-record-date'],
+  ['Habit batch reconciliation', 'data-v39-batch-action'],
+  ['Habit review stays mounted after move', 'v39OpenHabitCycle(hid'],
+  ['Fixed monthly recurrence', "recurrenceMode==='fixedDay'"],
+  ['Ordinal weekday recurrence', 'v39OrdinalDate'],
+  ['Manual monthly recurrence', "recurrenceMode==='manual'"],
+  ['Habit cycle coaching', 'v39CycleStatus'],
+  ['Life-area Review default', 'v39ReviewAreas'],
+  ['Weekly recognition hero', 'YOUR ${m.range'],
+  ['Pace comparison', 'v39-pace-comparison'],
+  ['Recovery wins', 'Recovery Wins'],
+  ['Important moves', 'Important moves'],
+  ['Attention Footprint', 'Attention Footprint'],
+  ['Life-area evidence', 'v39AreaReviewCard'],
+  ['Compact life-area icon selector', 'v39EnhanceAreaPicker'],
+  ['Primary and shared area logic', 'First choice is primary'],
+  ['Positive-behavior assets', 'recognition_big_move'],
+  ['Review metrics assets', 'metric_activities_closed'],
+  ['Habit action emphasis by frequency', 'v39HabitCardActions'],
+  ['Actionable exploration retained', 'v38InvestigationThread'],
+  ['Priority Rank retained', 'v35PriorityRank'],
+  ['Unified Task dates retained', "dateMode:'unified'"],
   ['Capture draft preservation retained', 'v36ClearCaptureAfterCreate'],
-  ['Multi-area contribution retained', 'secondaryAreas'],
+  ['Auto-save retained', 'Changes save automatically'],
+  ['Responsive v3.9 styling', '.v39-review-hero'],
+  ['Habit cycle styling', '.v39-week-strip'],
+  ['Area selector styling', '.v39-area-grid'],
 ];
 let failed = false;
 for (const [name, marker] of checks) {
@@ -37,4 +48,4 @@ for (const [name, marker] of checks) {
   failed ||= !ok;
 }
 if (failed) process.exit(1);
-console.log(`Questline 3.8 smoke checks complete: ${checks.length}/${checks.length}.`);
+console.log(`Questline 3.9 smoke checks complete: ${checks.length}/${checks.length}.`);

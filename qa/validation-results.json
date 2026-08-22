@@ -1,90 +1,164 @@
 {
-  "version": "3.8.0",
-  "schemaVersion": 20,
+  "version": "3.9.0",
+  "schema": 21,
   "results": [
     {
       "width": 320,
-      "diagnostics": {
-        "version": "3.8.0",
-        "schema": 20,
-        "width": 320,
-        "client": 320,
-        "title": "Questline v3.8.0",
-        "buttons": 115,
-        "overdue": true
+      "passed": 18,
+      "total": 18,
+      "checks": {
+        "title": true,
+        "today_no_overflow": true,
+        "version_visible": true,
+        "no_broken_images_today": true,
+        "review_areas_default": true,
+        "review_metrics": true,
+        "review_no_overflow": true,
+        "review_images_loaded": true,
+        "habit_actions": true,
+        "habit_next_three": true,
+        "habit_review_open": true,
+        "habit_week_strip": true,
+        "habit_modal_no_overflow": true,
+        "monthly_recurrence_modes": true,
+        "monthly_upcoming": true,
+        "area_selector_present": true,
+        "area_selector_eight": true,
+        "no_runtime_errors": true
       },
-      "errors": [],
-      "pass": true
+      "errors": []
     },
     {
       "width": 360,
-      "diagnostics": {
-        "version": "3.8.0",
-        "schema": 20,
-        "width": 360,
-        "client": 360,
-        "title": "Questline v3.8.0",
-        "buttons": 115,
-        "overdue": true
+      "passed": 18,
+      "total": 18,
+      "checks": {
+        "title": true,
+        "today_no_overflow": true,
+        "version_visible": true,
+        "no_broken_images_today": true,
+        "review_areas_default": true,
+        "review_metrics": true,
+        "review_no_overflow": true,
+        "review_images_loaded": true,
+        "habit_actions": true,
+        "habit_next_three": true,
+        "habit_review_open": true,
+        "habit_week_strip": true,
+        "habit_modal_no_overflow": true,
+        "monthly_recurrence_modes": true,
+        "monthly_upcoming": true,
+        "area_selector_present": true,
+        "area_selector_eight": true,
+        "no_runtime_errors": true
       },
-      "errors": [],
-      "pass": true
+      "errors": []
     },
     {
       "width": 390,
-      "diagnostics": {
-        "version": "3.8.0",
-        "schema": 20,
-        "width": 390,
-        "client": 390,
-        "title": "Questline v3.8.0",
-        "buttons": 115,
-        "overdue": true
+      "passed": 18,
+      "total": 18,
+      "checks": {
+        "title": true,
+        "today_no_overflow": true,
+        "version_visible": true,
+        "no_broken_images_today": true,
+        "review_areas_default": true,
+        "review_metrics": true,
+        "review_no_overflow": true,
+        "review_images_loaded": true,
+        "habit_actions": true,
+        "habit_next_three": true,
+        "habit_review_open": true,
+        "habit_week_strip": true,
+        "habit_modal_no_overflow": true,
+        "monthly_recurrence_modes": true,
+        "monthly_upcoming": true,
+        "area_selector_present": true,
+        "area_selector_eight": true,
+        "no_runtime_errors": true
       },
-      "errors": [],
-      "pass": true
+      "errors": []
     },
     {
       "width": 430,
-      "diagnostics": {
-        "version": "3.8.0",
-        "schema": 20,
-        "width": 430,
-        "client": 430,
-        "title": "Questline v3.8.0",
-        "buttons": 115,
-        "overdue": true
+      "passed": 18,
+      "total": 18,
+      "checks": {
+        "title": true,
+        "today_no_overflow": true,
+        "version_visible": true,
+        "no_broken_images_today": true,
+        "review_areas_default": true,
+        "review_metrics": true,
+        "review_no_overflow": true,
+        "review_images_loaded": true,
+        "habit_actions": true,
+        "habit_next_three": true,
+        "habit_review_open": true,
+        "habit_week_strip": true,
+        "habit_modal_no_overflow": true,
+        "monthly_recurrence_modes": true,
+        "monthly_upcoming": true,
+        "area_selector_present": true,
+        "area_selector_eight": true,
+        "no_runtime_errors": true
       },
-      "errors": [],
-      "pass": true
+      "errors": []
     },
     {
       "width": 768,
-      "diagnostics": {
-        "version": "3.8.0",
-        "schema": 20,
-        "width": 768,
-        "client": 768,
-        "title": "Questline v3.8.0",
-        "buttons": 115,
-        "overdue": true
+      "passed": 18,
+      "total": 18,
+      "checks": {
+        "title": true,
+        "today_no_overflow": true,
+        "version_visible": true,
+        "no_broken_images_today": true,
+        "review_areas_default": true,
+        "review_metrics": true,
+        "review_no_overflow": true,
+        "review_images_loaded": true,
+        "habit_actions": true,
+        "habit_next_three": true,
+        "habit_review_open": true,
+        "habit_week_strip": true,
+        "habit_modal_no_overflow": true,
+        "monthly_recurrence_modes": true,
+        "monthly_upcoming": true,
+        "area_selector_present": true,
+        "area_selector_eight": true,
+        "no_runtime_errors": true
       },
-      "errors": [],
-      "pass": true
+      "errors": []
     },
     {
       "width": 1440,
-      "diagnostics": {
-        "version": "3.8.0",
-        "schema": 20,
-        "width": 1425,
-        "client": 1425,
-        "title": "Questline v3.8.0",
-        "buttons": 115,
-        "overdue": true
+      "passed": 18,
+      "total": 18,
+      "checks": {
+        "title": true,
+        "today_no_overflow": true,
+        "version_visible": true,
+        "no_broken_images_today": true,
+        "review_areas_default": true,
+        "review_metrics": true,
+        "review_no_overflow": true,
+        "review_images_loaded": true,
+        "habit_actions": true,
+        "habit_next_three": true,
+        "habit_review_open": true,
+        "habit_week_strip": true,
+        "habit_modal_no_overflow": true,
+        "monthly_recurrence_modes": true,
+        "monthly_upcoming": true,
+        "area_selector_present": true,
+        "area_selector_eight": true,
+        "no_runtime_errors": true
       },
-      "errors": [],
-      "pass": true
+      "errors": []
     }
-  ]
+  ],
+  "passed": 108,
+  "total": 108
 }
